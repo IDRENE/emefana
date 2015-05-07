@@ -108,7 +108,7 @@ class MailServiceImpl implements MailService{
 		try {
 		logo =	UtilityBean.InputStreamToBase64(Optional.of(resource.getInputStream()), "png").get();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Log this 
 			e.printStackTrace();
 		}
 		return logo;

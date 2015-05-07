@@ -4,14 +4,21 @@
 package com.idrene.emefana.rest.converters.request;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.core.convert.converter.Converter;
 
 import com.idrene.emefana.domain.Address;
 import com.idrene.emefana.domain.City;
+import com.idrene.emefana.domain.Contact;
+import com.idrene.emefana.domain.Feature;
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.domain.ProviderEvents;
+import com.idrene.emefana.domain.ProviderService;
 import com.idrene.emefana.domain.ProviderType;
 import com.idrene.emefana.domain.User;
+import com.idrene.emefana.domain.VenuesDetail;
 import com.idrene.emefana.rest.resources.ListingResource;
 import com.idrene.emefana.security.EMEFANA_ROLES;
 
@@ -20,6 +27,9 @@ import com.idrene.emefana.security.EMEFANA_ROLES;
  * @since 1.0
  */
 public class ListingResourceToProvider implements Converter<ListingResource, Provider> {
+	/**
+	 * 
+	 */
 
 	@Override
 	public Provider convert(ListingResource resource) {
@@ -68,7 +78,7 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	
 	
 	/**
-	 * TODO To be persisted after provider(providerId)
+	 * TODO To be persisted after setting provider(providerId)
 	 * @param resource
 	 * @return
 	 */
@@ -80,5 +90,14 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 		usr.getRoles().addAll(Arrays.asList(EMEFANA_ROLES.PROVIDER,EMEFANA_ROLES.PROVIDER_USER));
 		return usr;
 	}
+	
+	/**
+	 * TODO Extract List<ProviderService> services
+	 * TODO Extract List<Contact> contacts 
+	 * TODO Extract List<Feature> features
+	 * TODO Extract Set<ProviderEvents> events
+	 * TODO Extract Set<VenuesDetail> venuesDetails
+	 * 
+	 */
 
 }
