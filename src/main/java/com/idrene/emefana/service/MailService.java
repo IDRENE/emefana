@@ -63,7 +63,7 @@ class MailServiceImpl implements MailService{
 	@EventListener
 	@Async
 	public void sendMailForSuggestedListing(CreationEvent<ListingResource> listingCreatedEvent)  {
-		System.out.println("Event fired...");
+		System.out.println("Event fired..."); //TODO log this event
 		final ListingResource provider = listingCreatedEvent.get();
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 	        @SuppressWarnings({ "rawtypes", "unchecked" })

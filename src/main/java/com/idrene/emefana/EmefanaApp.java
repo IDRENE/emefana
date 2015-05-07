@@ -13,13 +13,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.DispatcherServlet;
-
-import com.idrene.emefana.util.UtilityBean;
 
 /**
  * @author iddymagohe
@@ -27,6 +26,7 @@ import com.idrene.emefana.util.UtilityBean;
  */
 @Controller
 @SpringBootApplication
+@EnableAsync
 public class EmefanaApp {
 
 	@Value("${mail.smtp.host}")

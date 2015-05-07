@@ -41,7 +41,7 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 		//TODO 2 . Convert Persist provider-user and listing-photo  in one goal
 		//TODO 3 . Publish CreatedEvent<ListingResource>
 		publisher.publishEvent(new ListingCreatedEvent(listing));
-		System.out.println("Event above...");
+		System.out.println("Event above...");//Log this message
 	}
 	
 	
