@@ -32,7 +32,7 @@ public class ListingResourceController {
 	@Autowired
 	private ListingRegistrationService listingService;
 	
-	@RequestMapping(value={"api/provider","app/providers/api/provider"}, method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE , consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value={"api/provider"}, method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE , consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseStatus> registerListing(@RequestBody @Valid ListingResource listing,BindingResult result) throws URISyntaxException {
 		ResponseEntity<ResponseStatus> response = null;
 		if(result.hasErrors()){

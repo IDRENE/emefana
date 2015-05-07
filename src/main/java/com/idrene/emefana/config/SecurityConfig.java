@@ -6,6 +6,7 @@ package com.idrene.emefana.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -84,7 +85,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				  .successHandler(authSuccess)
 //				  .failureHandler(authFailure)
 				.authorizeRequests()
-				   .antMatchers("/resources/**", "/api/authenticate").permitAll()                 
+				   .antMatchers("/resources/**", "/api/authenticate").permitAll()
+				   .antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()//allow CORS option calls
 		           //.antMatchers("/admin/**").hasRole("ADMIN")
 		           //.antMatchers("/providers/**").hasRole("ADMIN")   
 		           //.antMatchers("/db/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_DBA')")  
