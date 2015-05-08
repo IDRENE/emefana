@@ -1,0 +1,336 @@
+{
+  "venues": [
+    {
+      "name": "A",
+      "capacity": 300,
+      "price": 2376,
+      "$$hashKey": "object:16",
+      "currency": "TZS"
+    }
+  ],
+  "features": [
+    {
+      "name": "feature1",
+      "description": [
+        "description one",
+        "description ywo"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "sid": "flashy",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        }
+      ]
+    },
+    {
+      "sid": "handsomely",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        }
+      ]
+    },
+    {
+      "sid": "rampant",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        },
+        {
+          "type": "Photography and Video"
+        },
+        {
+          "type": "Cake"
+        }
+      ]
+    },
+    {
+      "sid": "snobbish",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        },
+        {
+          "type": "Audio visual services"
+        },
+        {
+          "type": "Cake"
+        }
+      ]
+    },
+    {
+      "sid": "lunch",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        },
+        {
+          "type": "Cake"
+        },
+        {
+          "type": "Car hire"
+        },
+        {
+          "type": "Entertainment"
+        }
+      ]
+    },
+    {
+      "sid": "contain",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        },
+        {
+          "type": "Decoration"
+        },
+        {
+          "type": "Audio visual services"
+        },
+        {
+          "type": "Car hire"
+        }
+      ]
+    },
+    {
+      "sid": "squeal",
+      "providerTypes": [
+        {
+          "type": "Venues"
+        },
+        {
+          "type": "Photography and Video"
+        },
+        {
+          "type": "Cake"
+        },
+        {
+          "type": "Car hire"
+        },
+        {
+          "type": "Catering"
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "eid": "Conferences",
+      "description": "are popular and important business events. Everything about the event management of academic, medical and business conferences",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Seminars",
+      "description": "educational events for the training of managers and employees.Most seminars are not comparable with boring lectures. Interactivity is core!",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Meetings",
+      "description": "are common business events in large companies, perfect to discuss operational and financial strategies",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Team Building Events",
+      "description": "a key to develop and motivate teams in companies and divisions. Everything about the planning of professional team building events",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Trade Shows",
+      "description": "exhibitions where companies can present and demonstrate their latest products. A professional presentation is crucial",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Business Dinners",
+      "description": "a long-standing corporate tradition to conclude fiscal years, celebrate new milestones or to get in contact with key customers",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Golf Events",
+      "description": "golf tournaments or retreats. Those events aim to acquire new customers, to increase customer loyalty or to motivate employees",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Press Conferences",
+      "description": "perfect business events to promote new products, launch marketing campains or to inform the shareholders and public about financial issues",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Networking Events",
+      "description": "are personal marketing galas. Such events are great opportunities for contact establishment and personal marketing",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Incentive Travel",
+      "description": "are perfect to reward and to motivate employees or to increase customer loyalty and retention. Everything about incentive travel:",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Opening Ceremonies",
+      "description": "are held to start conventions, annual meetings and other events that last for two or more days. Find everything about opening events",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Product Launches",
+      "description": "are critical for the successful market introduction of some products. A perfect product presentation might also increase the media coverage",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Theme Parties",
+      "description": "events that devote to a special topic. Popular events are casino nights or Halloween parties. Ideas and planning tips",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "VIP Events",
+      "description": " are used to increase customer loyalty. Professional planners organizing VIP events that ultimately increase your revenues",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Trade Fairs",
+      "description": "are a great opportunity to present your latest products to customers and business partners.",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Shareholder Meetings",
+      "description": "are yearly and obligatory events to inform a corporation's shareholders about company issues and to elect the Board of Directors",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Award Ceremonies",
+      "description": "are great events to honor and motivate key staff or to acquire and retain customers. Event planners are able to organize events to remember",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Incentive Events",
+      "description": "motivate employees or close the ties to customers. Event managers are planning events that help to enhance customer loyalty",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Board Meetings",
+      "description": "focus on strategic goals and visions. The event venue and the planning process should reflect the prestigious nature of these meetings",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Executive Retreats",
+      "description": "escapes from stressful work schedules and the day-to-day business. Learn how they should stimulate free thinking and creativity",
+      "categories": [
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Weddings",
+      "description": " should be the most important days in the life of brides, grooms and their families. Professional event managers help to plan the events",
+      "categories": [
+        "private"
+      ]
+    },
+    {
+      "eid": "birthday events",
+      "description": " Birthdays require seldom a professional event manager, but there are exceptions. Find out how event managers can help you to make your party a success",
+      "categories": [
+        "private",
+        "corporate"
+      ]
+    },
+    {
+      "eid": "Wedding Anniversaries",
+      "description": " celebrate milestones in a couple's life together.Ideas and hints that help you to plan those events or find professional even managers",
+      "categories": [
+        "private"
+      ]
+    },
+    {
+      "eid": "Family Events",
+      "description": " are great opportunities to assemble whole families. We offer hints and ideas to plan perfect family events like birthdays, weddings, etc.",
+      "categories": [
+        "private"
+      ]
+    }
+  ],
+  "uselocation": true,
+  "feature": "",
+  "agree": true,
+  "user": {
+    "firstname": "Rashid",
+    "lastname": "James",
+    "emailaddress": "iddyiam@gmail.com",
+    "role": {
+      "label": "Manager",
+      "value": "MANAGER"
+    }
+  },
+  "name": "HUMIDITY",
+  "category": {
+    "type": "Venues"
+  },
+  "description": "eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours eventual leader in this category of ours",
+  "country": "Tanzania",
+  "location": {
+    "speed": null,
+    "heading": null,
+    "altitudeAccuracy": null,
+    "accuracy": 79,
+    "altitude": null,
+    "longitude": -77.59801910000002,
+    "latitude": 37.595083599999995
+  },
+  "city": {
+    "cid": "Sumbawanga",
+    "region": "Rukwa",
+    "country": "Tanzania",
+    "location": [
+      31.616667,
+      -7.966667
+    ]
+  },
+  "streetaddress": "gewywetwef",
+  "additionalstreetaddress": "uuuuuu",
+  "phonenumber": "9879799797979",
+  "photo": {
+    "filetype": "image/jpeg",
+    "filename": "coding.jpg",
+    "filesize": 1371841,
+    "base64": "/9j/4QesRXhpZgAATU0AKgAAAAgACQEPAAIAAAAGAAAAegEQAAIAAAAOAAAAgAEaAAUAAAABAAAAjgEbAAUAAAABAAAAlgEoAAMAAAABAAIAAAExAAIAAAAGAAAAngEyAAIAAAAUAAAApIdpAAQAAAABAAAAuIglAAQAAAABAAAGggAAAABBcHBsZQBpUGhvbmUgNiBQbHVzAAAAAEgAAAABAAAASAAAAAE4LjEuMgAyMDE0OjEyOjI4IDE5OjA4OjA2AAAhgpoABQAAAAEAAAJKgp0ABQAAAAEAAAJSiCIAAwAAAAEAAgAAiCcAAwAAAAEAZAAAkAAABwAAAAQwMjIxkAMAAgAAABQAAAJakAQAAgAAABQAAAJukQEABwAAAAQBAgMAkgEACgAAAAEAAAKCkgIABQAAAAEAAAKKkgMACgAAAAEAAAKSkgQACgAAAAEAAAKakgcAAwAAAAEABQAAkgkAAwAAAAEA"
+     }
+}

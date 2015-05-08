@@ -38,6 +38,7 @@ public class Contact {
 	  Mobile,
 	  Email,
 	  PoBox,
+	  Facebook,
 	  Website
   } 
 }

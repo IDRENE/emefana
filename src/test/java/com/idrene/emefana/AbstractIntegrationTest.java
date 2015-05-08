@@ -15,6 +15,7 @@ Res * Copyright 2012-2013 the original author or authors.
  */
 package com.idrene.emefana;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -34,5 +35,8 @@ import org.springframework.transaction.annotation.Transactional;
 @IntegrationTest
 public abstract class AbstractIntegrationTest {
 	protected static final Resource resource = new ClassPathResource("sundeck.jpg");
+	protected static final Resource lisingResource = new ClassPathResource("listingResource.json");
+	protected  final ObjectMapper mapper = new ObjectMapper();
+	
 
 }

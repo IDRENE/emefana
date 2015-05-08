@@ -54,6 +54,9 @@ import com.idrene.emefana.rest.resources.types.Venue;
     "streetaddress",
     "additionalstreetaddress",
     "phonenumber",
+    "emailaddress",
+    "website",
+    "fburl",
     "photo"
 })
 public class ListingResource {
@@ -96,6 +99,12 @@ public class ListingResource {
     private String additionalstreetaddress;
     @JsonProperty("phonenumber")
     private String phonenumber;
+    @JsonProperty("emailaddress")
+    private String emailaddress;
+    @JsonProperty("website")
+    private String website;
+    @JsonProperty("fburl")
+    private String facebook;
     @JsonProperty("photo")
     private Photo photo;
     @JsonIgnore
@@ -455,8 +464,58 @@ public class ListingResource {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+    
+    
 
     /**
+	 * @return the emailaddress
+	 */
+    @JsonProperty("emailaddress")
+	public String getEmailaddress() {
+		return emailaddress;
+	}
+
+	/**
+	 * @param emailaddress the emailaddress to set
+	 */
+	@JsonProperty("emailaddress")
+	public void setEmailaddress(String emailaddress) {
+		this.emailaddress = emailaddress;
+	}
+
+	/**
+	 * @return the website
+	 */
+	@JsonProperty("website")
+	public String getWebsite() {
+		return website;
+	}
+
+	/**
+	 * @param website the website to set
+	 */
+	@JsonProperty("website")
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	/**
+	 * @return the facebook
+	 */
+	@JsonProperty("fburl")
+	public String getFacebook() {
+		return facebook;
+	}
+
+	/**
+	 * @param facebook the facebook to set
+	 */
+	 @JsonProperty("fburl")
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	/**
      * 
      * @return
      *     The photo
