@@ -1,0 +1,355 @@
+2015-05-09 10:05:55.668  INFO 4113 --- [main] o.a.maven.surefire.booter.ForkedBooter   : Starting ForkedBooter v2.17 on Iddys-MacBook-Pro.local with PID 4113 (/Users/iddymagohe/.m2/repository/org/apache/maven/surefire/surefire-booter/2.17/surefire-booter-2.17.jar started by iddymagohe in /Users/iddymagohe/idrene-projects/emefana_microservices/emefana)
+2015-05-09 10:05:57.249 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:57.250 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:57.252 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:57.253 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:57.253 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.263 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.264 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.264 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.264 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.265 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.279 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.279 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.280 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.280 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.280 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.282 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.284 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.285 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.285 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.286 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.304 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.305 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.305 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.306 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.306 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.313 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.314 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.315 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.315 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.315 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.329 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.329 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.329 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.330 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.330 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.333 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.333 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.334 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.334 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.334 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.339 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.339 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.339 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.340 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.340 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.342 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.342 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.342 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.343 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.343 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.350 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.350 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.350 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.351 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.351 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.367 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.367 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.368 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.368 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.368 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:58.971 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.971 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:05:58.972 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:05:58.972 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:05:58.972 DEBUG 4113 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:05:59.041  INFO 4113 --- [main] o.a.maven.surefire.booter.ForkedBooter   : Started ForkedBooter in 3.627 seconds (JVM running for 4.644)
+2015-05-09 10:06:44.827 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:44.831 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:44.831 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:44.831 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:44.832 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:44.857  INFO 4114 --- [main] com.idrene.emefana.EmefanaApp            : Starting EmefanaApp on Iddys-MacBook-Pro.local with PID 4114 (/Users/iddymagohe/idrene-projects/emefana_microservices/emefana/target/classes started by iddymagohe in /Users/iddymagohe/idrene-projects/emefana_microservices/emefana)
+2015-05-09 10:06:45.848 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [applicationConfig: [classpath:/application.properties]] PropertySource with search precedence immediately lower than [applicationConfigurationProperties]
+2015-05-09 10:06:45.849 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Removing [applicationConfigurationProperties] PropertySource
+2015-05-09 10:06:45.849 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Removing [defaultProperties] PropertySource
+2015-05-09 10:06:46.604  INFO 4114 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2015-05-09 10:06:46.605  INFO 4114 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.0.20
+2015-05-09 10:06:46.676  INFO 4114 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2015-05-09 10:06:46.676 DEBUG 4114 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2015-05-09 10:06:46.676  INFO 4114 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1789 ms
+2015-05-09 10:06:46.741 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:46.741 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:46.742 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:46.742 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:46.742 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.065 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.076 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.076 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.076 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.076 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.083 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.083 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.083 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.083 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.083 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.084 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.085 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.085 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.085 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.085 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.094 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.094 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.095 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.095 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.095 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.098 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.098 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.098 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.098 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.098 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.106 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.106 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.106 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.107 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.107 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.109 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.110 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.110 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.110 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.110 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.113 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.114 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.115 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.115 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.115 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.117 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.118 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.118 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.118 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.118 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.124 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.124 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.125 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.125 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.125 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.138 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.139 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.139 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.139 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.139 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.157 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.158 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.158 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.158 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.158 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.173 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.173 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
+2015-05-09 10:06:48.173 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2015-05-09 10:06:48.173 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
+2015-05-09 10:06:48.173 DEBUG 4114 --- [localhost-startStop-1] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+2015-05-09 10:06:48.283 DEBUG 4114 --- [localhost-startStop-1] o.s.web.filter.HiddenHttpMethodFilter    : Initializing filter 'hiddenHttpMethodFilter'
+2015-05-09 10:06:48.284 DEBUG 4114 --- [localhost-startStop-1] o.s.web.filter.HiddenHttpMethodFilter    : Filter 'hiddenHttpMethodFilter' configured successfully
+2015-05-09 10:06:48.288 DEBUG 4114 --- [main] o.s.w.c.s.StandardServletEnvironment     : Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+2015-05-09 10:06:48.794 DEBUG 4114 --- [main] o.s.w.s.v.velocity.VelocityConfigurer    : Resource loader path [classpath:/templates/] resolved to file [/Users/iddymagohe/idrene-projects/emefana_microservices/emefana/target/classes/templates]
+2015-05-09 10:06:48.796  INFO 4114 --- [main] o.s.w.s.v.velocity.VelocityConfigurer    : ClasspathResourceLoader with name 'springMacro' added to configured VelocityEngine
+2015-05-09 10:06:49.171  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6b4a4e18: startup date [Sat May 09 10:06:44 EDT 2015]; root of context hierarchy
+2015-05-09 10:06:49.256 DEBUG 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Looking for request mappings in application context: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6b4a4e18: startup date [Sat May 09 10:06:44 EDT 2015]; root of context hierarchy
+2015-05-09 10:06:49.271  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto java.lang.String com.idrene.emefana.EmefanaApp.home()
+2015-05-09 10:06:49.272  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/** || /api/provider],methods=[OPTIONS]}" onto org.springframework.http.ResponseEntity<java.lang.Void> com.idrene.emefana.EmefanaApp.getProposalsOptions()
+2015-05-09 10:06:49.274  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/provider],methods=[POST],consumes=[application/json],produces=[application/json]}" onto public org.springframework.http.ResponseEntity<com.idrene.emefana.rest.resources.ResponseStatus> com.idrene.emefana.rest.controllers.ListingResourceController.registerListing(com.idrene.emefana.rest.resources.ListingResource,org.springframework.validation.BindingResult) throws java.net.URISyntaxException
+2015-05-09 10:06:49.275  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/metadata || /app/providers/api/metadata],methods=[GET],produces=[application/json]}" onto org.springframework.http.ResponseEntity<java.util.List<com.idrene.emefana.domain.MetaResource<?>>> com.idrene.emefana.rest.controllers.MetaResourceController.retrieveMetadata()
+2015-05-09 10:06:49.277  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/authenticate],methods=[POST],consumes=[application/json]}" onto org.springframework.http.ResponseEntity<?> com.idrene.emefana.rest.controllers.tokens.TokenController.generateToken(com.idrene.emefana.rest.resources.EmefanaUser)
+2015-05-09 10:06:49.280  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2015-05-09 10:06:49.280  INFO 4114 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest)
+2015-05-09 10:06:49.344 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Looking for URL mappings in application context: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6b4a4e18: startup date [Sat May 09 10:06:44 EDT 2015]; root of context hierarchy
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalRequiredAnnotationProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalCommonAnnotationProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.event.internalEventListenerProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.event.internalEventListenerFactory': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'emefanaApp': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor': no URL paths identified
+2015-05-09 10:06:49.345 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mongoRepositoryConfig': no URL paths identified
+2015-05-09 10:06:49.346 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'securityConfig': no URL paths identified
+2015-05-09 10:06:49.346 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'serviceConfig': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'listingResourceController': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'metaResourceController': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'simpleCORSFilter': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'tokenController': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationTokenProcessingFilter': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authFailure': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authSuccess': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'entryPointUnauthorizedHandler': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'userDetailsServiceImpl': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'emefanaGridFsServiceImpl': no URL paths identified
+2015-05-09 10:06:49.347 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'emefanaServiceImpl': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'listingRegistrationServiceImpl': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mailServiceImpl': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'metaServiceImpl': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mongoTemplate': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'gridFsTemplate': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mongoDbFactory': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mongoMappingContext': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'isNewStrategyFactory': no URL paths identified
+2015-05-09 10:06:49.348 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'customConversions': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mappingMongoConverter': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.mongodb.repository.config.MongoRepositoryConfigurationExtension#0': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'eventTypeRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'personRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'cityRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'bookingRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'serviceOfferingRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'providerRepositoryImpl': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'providerRepository': no URL paths identified
+2015-05-09 10:06:49.349 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'providerTypeRepository': no URL paths identified
+2015-05-09 10:06:49.350 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration': no URL paths identified
+2015-05-09 10:06:49.350 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationManagerBuilder': no URL paths identified
+2015-05-09 10:06:49.350 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'enableGlobalAuthenticationAutowiredConfigurer': no URL paths identified
+2015-05-09 10:06:49.350 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration': no URL paths identified
+2015-05-09 10:06:49.350 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'methodSecurityInterceptor': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'methodSecurityMetadataSource': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'preInvocationAuthorizationAdvice': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'metaDataSourceAdvisor': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'objectPostProcessor': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'delegatingApplicationListener': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'webSecurityExpressionHandler': no URL paths identified
+2015-05-09 10:06:49.351 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'springSecurityFilterChain': no URL paths identified
+2015-05-09 10:06:49.352 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'privilegeEvaluator': no URL paths identified
+2015-05-09 10:06:49.354 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'autowiredWebSecurityConfigurersIgnoreParents': no URL paths identified
+2015-05-09 10:06:49.354 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationManagerBean': no URL paths identified
+2015-05-09 10:06:49.355 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'passwordEncoder': no URL paths identified
+2015-05-09 10:06:49.355 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.aop.config.internalAutoProxyCreator': no URL paths identified
+2015-05-09 10:06:49.355 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'javaMailSenderImpl': no URL paths identified
+2015-05-09 10:06:49.355 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'cacheManager': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'utilityBean': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'passwordEncryptor': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'velocityEngine': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'conversionService': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.scheduling.annotation.ProxyAsyncConfiguration': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.internalAsyncAnnotationProcessor': no URL paths identified
+2015-05-09 10:06:49.356 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'dispatcherServlet': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'multipartConfigElement': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.AutoConfigurationPackages': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.PropertyPlaceholderAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.condition.BeanTypeRegistry': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'propertySourcesPlaceholderConfigurer': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration$TomcatWebSocketConfiguration': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'websocketContainerCustomizer': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.websocket.WebSocketAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration$EmbeddedTomcat': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'tomcatEmbeddedServletContainerFactory': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.EmbeddedServletContainerAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.357 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'embeddedServletContainerCustomizerBeanPostProcessor': no URL paths identified
+2015-05-09 10:06:49.358 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.DispatcherServletAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'error': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'beanNameViewResolver': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'errorAttributes': no URL paths identified
+2015-05-09 10:06:49.359 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'basicErrorController': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$EnableWebMvcConfiguration': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestMappingHandlerAdapter': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestMappingHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcContentNegotiationManager': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'viewControllerHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'beanNameHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'resourceHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcResourceUrlProvider': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'defaultServletHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.360 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcConversionService': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcValidator': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcPathMatcher': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcUrlPathHelper': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcUriComponentsContributor': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'httpRequestHandlerAdapter': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'simpleControllerHandlerAdapter': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'handlerExceptionResolver': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mvcViewResolver': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter$FaviconConfiguration': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'faviconHandlerMapping': no URL paths identified
+2015-05-09 10:06:49.361 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'faviconRequestHandler': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'defaultViewResolver': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'requestContextListener': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'viewResolver': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.mvc.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.resources.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor.store': no URL paths identified
+2015-05-09 10:06:49.362 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.379 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'hiddenHttpMethodFilter': no URL paths identified
+2015-05-09 10:06:49.379 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.379 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'persistenceExceptionTranslationPostProcessor': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperBuilderConfiguration': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonObjectMapperBuilder': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'http.mappers.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.jackson.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration$JacksonObjectMapperConfiguration': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonObjectMapper': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpMessageConvertersAutoConfiguration$StringHttpMessageConverterConfiguration': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'stringHttpMessageConverter': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.http.encoding.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.380 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.JacksonHttpMessageConvertersConfiguration$MappingJackson2HttpMessageConverterConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mappingJackson2HttpMessageConverter': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.JacksonHttpMessageConvertersConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.GsonHttpMessageConvertersConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpMessageConvertersAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'messageConverters': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.web.config.HateoasAwareSpringDataWebConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'pageableResolver': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'sortResolver': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'pagedResourcesAssembler': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'pagedResourcesAssemblerArgumentResolver': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.data.web.config.SpringDataJacksonConfiguration': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'jacksonGeoModule': no URL paths identified
+2015-05-09 10:06:49.381 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mbeanExporter': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'objectNamingStrategy': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'mbeanServer': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.mongo.MongoDataAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.data.mongodb.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.BootGlobalAuthenticationConfiguration': no URL paths identified
+2015-05-09 10:06:49.382 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'bootGlobalAuthenticationConfigurationAdapter': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'authenticationEventPublisher': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'securityProperties': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration$VelocityWebConfiguration': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'velocityConfigurer': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'velocityViewResolver': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'spring.velocity.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.383 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.HttpEncodingAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.389 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'characterEncodingFilter': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.MultipartAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'multipartResolver': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'multipart.CONFIGURATION_PROPERTIES': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.boot.autoconfigure.web.ServerPropertiesAutoConfiguration': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'serverProperties': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'autoConfigurationReport': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'applicationEventMulticaster': no URL paths identified
+2015-05-09 10:06:49.390 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'environment': no URL paths identified
+2015-05-09 10:06:49.391 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'systemProperties': no URL paths identified
+2015-05-09 10:06:49.391 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'systemEnvironment': no URL paths identified
+2015-05-09 10:06:49.391 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry': no URL paths identified
+2015-05-09 10:06:49.391 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'messageSource': no URL paths identified
+2015-05-09 10:06:49.391 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'servletContext': no URL paths identified
+2015-05-09 10:06:49.392 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'contextParameters': no URL paths identified
+2015-05-09 10:06:49.392 DEBUG 4114 --- [main] o.s.w.s.h.BeanNameUrlHandlerMapping      : Rejected bean name 'contextAttributes': no URL paths identified
+2015-05-09 10:06:49.411  INFO 4114 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2015-05-09 10:06:49.411  INFO 4114 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2015-05-09 10:06:49.437 DEBUG 4114 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Looking for exception mappings: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6b4a4e18: startup date [Sat May 09 10:06:44 EDT 2015]; root of context hierarchy
+2015-05-09 10:06:49.497  INFO 4114 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2015-05-09 10:06:49.772 DEBUG 4114 --- [main] o.s.w.s.resource.ResourceUrlProvider     : Looking for resource handler mappings
+2015-05-09 10:06:49.774 DEBUG 4114 --- [main] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/**/favicon.ico", locations=[class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/], class path resource []], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@cb03411]
+2015-05-09 10:06:49.774 DEBUG 4114 --- [main] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/webjars/**", locations=[class path resource [META-INF/resources/webjars/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@4c59e45e]
+2015-05-09 10:06:49.774 DEBUG 4114 --- [main] o.s.w.s.resource.ResourceUrlProvider     : Found resource handler mapping: URL pattern="/**", locations=[ServletContext resource [/], class path resource [META-INF/resources/], class path resource [resources/], class path resource [static/], class path resource [public/]], resolvers=[org.springframework.web.servlet.resource.PathResourceResolver@58ec7116]
+2015-05-09 10:06:49.839  INFO 4114 --- [main] com.idrene.emefana.EmefanaApp            : Started EmefanaApp in 5.187 seconds (JVM running for 5.865)
