@@ -10,11 +10,11 @@ import java.io.InputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.UUID;
@@ -32,11 +32,11 @@ import lombok.Getter;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
+
+import com.idrene.emefana.domain.MetadataFields;
+import com.idrene.emefana.domain.FileMetadata.FILETYPE;
+import com.idrene.emefana.rest.resources.types.Photo;
 
 /**
  * @author iddymagohe
@@ -168,6 +168,19 @@ public class UtilityBean {
 		}
 
 		return Optional.empty();
+	}
+	
+	public static Map<String, String> photoMetadata(String providerId,Photo photo) {
+		Map<String, String> metadataMap = new HashMap<>();
+		metadataMap.put(MetadataFields.CONTENT_TYPE, photo.getFiletype());
+		metadataMap.put(MetadataFields.FILE_NAME, photo.getFilename());
+		metadataMap.put(MetadataFields.TYPE, FILETYPE.PHOTO.name());
+		metadataMap.put(MetadataFields.FILE_DESCR, "Thumbnail image");
+		metadataMap.put(MetadataFields.PROVIDER_ID, providerId);
+		metadataMap.put(MetadataFields.THUMBNAIL, "true");
+		
+		return metadataMap;
+
 	}
 	
 

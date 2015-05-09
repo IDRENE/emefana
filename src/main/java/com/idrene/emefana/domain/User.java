@@ -37,13 +37,15 @@ public class User {
 	@Setter @Getter private String lastName;
 	
 	@Indexed
-	@Setter @Getter String emailAddress;
+	@Setter @Getter private  String emailAddress;
 	
 	@Indexed
-	@Getter @Setter String associatedProvider;
+	@Getter @Setter private String associatedProvider;
+	
+	@Getter @Setter private String listingRole;
 	
 	@JsonIgnore
-	@Setter @Getter String password;
+	@Setter @Getter private String password;
 	
 	@JsonIgnore
 	@Getter @Setter Set<EMEFANA_ROLES> roles = new HashSet<>();

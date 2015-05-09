@@ -26,7 +26,7 @@ public class FileMetadata {
 	@Getter
 	private String providerId;
 	@Getter
-	private String type;
+	private String filetype; //PHOTO or VIDEO
 	@Getter
 	private boolean thumbnail;
 	@Getter
@@ -68,7 +68,7 @@ public class FileMetadata {
 	 */
 	public FileMetadata(String providerId, String type, String userId) {
 		this.providerId = providerId;
-		this.type = type;
+		this.filetype = type;
 		this.userId = userId;
 	}
 	
@@ -83,7 +83,7 @@ public class FileMetadata {
 		fileData.ifPresent(file -> {
 			contentType = file.getContentType();
 			fileName = file.getFilename();
-			FileMetadata.fieldAsStringFromGridFSDBFile(file, MetadataFields.TYPE).ifPresent(value -> type = value);
+			FileMetadata.fieldAsStringFromGridFSDBFile(file, MetadataFields.TYPE).ifPresent(value -> filetype = value);
 			FileMetadata.fieldAsStringFromGridFSDBFile(file, MetadataFields.THUMBNAIL).ifPresent(value -> thumbnail = Boolean.valueOf(value));
 			FileMetadata.fieldAsStringFromGridFSDBFile(file, MetadataFields.PROVIDER_ID).ifPresent(value -> providerId = value);
 			FileMetadata.fieldAsStringFromGridFSDBFile(file, MetadataFields.USER_ID).ifPresent(value -> userId = value);
@@ -105,7 +105,7 @@ public class FileMetadata {
 	}
 	
 	public Optional<String> oType(){
-		return Optional.ofNullable(type);
+		return Optional.ofNullable(filetype);
 	}
 
 	

@@ -104,8 +104,10 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	private User extractProviderUser(ListingResource resource){
 		User usr = new User();
 		usr.setEmailAddress(resource.getUser().getEmailaddress());
+		usr.setId(resource.getUser().getEmailaddress());
 		usr.setFirstName(resource.getUser().getFirstname());
 		usr.setLastName(resource.getUser().getLastname());
+		usr.setListingRole(resource.getUser().getRole().getValue());
 		usr.getRoles().addAll(Arrays.asList(EMEFANA_ROLES.PROVIDER,EMEFANA_ROLES.PROVIDER_USER));
 		return usr;
 	}

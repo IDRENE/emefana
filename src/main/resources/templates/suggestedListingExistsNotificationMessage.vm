@@ -63,9 +63,16 @@
 														
 														<p>Hello ${listing.user.firstname} ${listing.user.lastname}, </p>
 
-														Thank you for submitting ${listing.name} to E-mefana.&nbsp;
-														Our team will verify that this business meets our listing guidelines from the information provided
-														and email you for the next steps.You can always review our listings guidelines <a href="#">here.</a>
+														${listing.name} is already registered with  E-mefana.&nbsp;
+														<p> 
+														   For verified listing (you should have received an email) please logon to  <a href="#" alt="EMEFANA CONTROL CENTRE">EMEFANA CONTROL CENTRE</a> for listing management features,  including but not limited to 
+														   adding/editing  details of the listing, events schedule and bookings, reading &amp; responding to customers reviews
+														   and  additional free features to  help you manage this business with easy
+														    
+														 </p>
+														If you have not received a verification email for this listing , please be reminded that 
+														our team is still working on to verify  and make sure that this  business meets our listing guidelines from the information provided, 
+														and we will email you for the next steps.You can always review our listings guidelines <a href="#">here.</a>
 														<p>
 														  For the time being feel free to email us should you have questions about our listing review and the approval process.
 														</p>

@@ -13,7 +13,10 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.EventListener;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -23,6 +26,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
+import org.springframework.util.StringUtils;
 
 import com.idrene.emefana.rest.resources.ListingResource;
 import com.idrene.emefana.service.events.CreationEvent;
@@ -40,6 +44,7 @@ public interface MailService {
 
 @Service
 class MailServiceImpl implements MailService{
+	private static final Logger logger = LoggerFactory.getLogger(MailServiceImpl.class);
 	/*
 	 * TODO observer for email notification
 	 */
@@ -56,6 +61,9 @@ class MailServiceImpl implements MailService{
 		simplemail();
 	}
 	
+	@Value("${email.bcc}")
+	private String bccEmail;
+	
 	/**Listing for listingCreationEvent
 	 * @param listingCreatedEvent
 	 */
@@ -63,23 +71,35 @@ class MailServiceImpl implements MailService{
 	@EventListener
 	@Async
 	public void sendMailForSuggestedListing(CreationEvent<ListingResource> listingCreatedEvent)  {
-		System.out.println("Event fired..."); //TODO log this event
 		final ListingResource provider = listingCreatedEvent.get();
+		logger.info("Sending email for Listing :" + provider.getName());
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 	        @SuppressWarnings({ "rawtypes", "unchecked" })
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 	             MimeMessageHelper message = new MimeMessageHelper(mimeMessage);
 	             message.setTo(provider.getUser().getEmailaddress());
-	             message.setBcc("iddy85@gmail.com");
-	            // message.setFrom(new InternetAddress(suggestedPodcast.getEmail()) );
-	             message.setSubject("New suggested Listing - " + provider.getName() );
+	             
+	             if(StringUtils.hasText(provider.getEmailaddress())){
+	            	  message.setCc(provider.getEmailaddress());
+	             }
+	            	 message.setBcc(bccEmail);
+	            	// message.setFrom(new InternetAddress(suggestedPodcast.getEmail()) );
+	             
 	             message.setSentDate(new Date());
 	             Map model = new HashMap();	             
 	             model.put("listing", provider);
 	             model.put("logo", MailServiceImpl.getBase64Logo());
 	             
-	             String text = VelocityEngineUtils.mergeTemplateIntoString(
-	                velocityEngine, "templates/suggestedListingNotificationMessage.vm", "UTF-8", model);
+	             String text="";
+	          	
+					if (listingCreatedEvent.isAnExistingListing()) {
+						message.setSubject("Existing Listing - "+ provider.getName());
+						text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "templates/suggestedListingExistsNotificationMessage.vm", "UTF-8", model);
+					} else {
+						message.setSubject("New suggested Listing - " + provider.getName());
+						text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,  "templates/suggestedListingNotificationMessage.vm", "UTF-8", model);
+					}
+	                
 	             message.setText(text, true);
 	          }
 	       };
@@ -92,7 +112,7 @@ class MailServiceImpl implements MailService{
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 		
 		try {
-			helper.setTo("iddyiam@gmail.com");
+			helper.setTo(bccEmail);
 			helper.setText("Thank you for Registering with Emefana! test");
 			helper.setSubject("Emefana Hiyoooo");
 		} catch (MessagingException e) {

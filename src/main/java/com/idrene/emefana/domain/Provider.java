@@ -31,6 +31,8 @@ public class Provider {
 	@Id
 	@Getter @Setter private String pid;
 	
+	@Getter @Setter boolean activated=false;
+	
 	@DBRef
 	@Getter @Setter Provider parent;
 	

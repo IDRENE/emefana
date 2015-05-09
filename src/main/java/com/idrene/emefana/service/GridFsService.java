@@ -83,6 +83,12 @@ class EmefanaGridFsServiceImpl implements GridFsService{
 		return operations.find(query(criteria));
 	}
 	
+	
+	/**
+	 * meta-data fields are nested in {@value #METADATAFIELD}
+	 * @param field
+	 * @return
+	 */
 	static String getMetaField(String field) {
 		return field.contains(METADATAFIELD ) ? field : METADATAFIELD + field;
 	}

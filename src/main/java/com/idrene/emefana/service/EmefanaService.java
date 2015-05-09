@@ -50,6 +50,8 @@ public interface EmefanaService {
 
 	public Optional<User> registerUser(User user) throws EntityExists;
 	
+	public Optional<User> registerListingContactPerson(User user) ;
+	
 	public Optional<Provider> registerProvider(Provider provider) throws EntityExists;
 	//TODO add , retrieval and associated file contents to providers via #{@link #GridFsService}
 	//TODO associate provider user save 
@@ -154,9 +156,6 @@ class EmefanaServiceImpl implements EmefanaService {
 		provider.setPid(UtilityBean.generateProviderId());
 		provider.setCode(UtilityBean.generateProviderCode(provider.getPid()));
 		dbProvider = Optional.of(providerRepository.save(provider));
-		//TODO fileSave
-		//TODO UserSave
-		
 		return  dbProvider;
 	}
 	
@@ -179,6 +178,18 @@ class EmefanaServiceImpl implements EmefanaService {
 		List<String> providerIds = new ArrayList<>() ;
 		bookedProviders.forEach(booking -> providerIds.add(booking.getProvider().getPid()));
 		return providerIds;
+	}
+
+	@Override
+	public Optional<User> registerListingContactPerson(User user) {
+		Assert.isTrue(user.getOemailAddress().isPresent()
+				&& user.getOuserId().isPresent(),"UserId and Email are mandatory fields");
+		Optional<User> dbUser = Optional.ofNullable(userRepository
+				.findByIdOrEmailAddressAllIgnoreCase(user.getId(),user.getEmailAddress()));
+		if (!dbUser.isPresent()) {
+			dbUser = Optional.of(userRepository.save(user));
+		}
+		return dbUser;
 	}
 	
 

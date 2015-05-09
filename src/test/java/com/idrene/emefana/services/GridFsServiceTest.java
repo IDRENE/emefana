@@ -36,7 +36,7 @@ public class GridFsServiceTest extends AbstractIntegrationTest{
 	public void storeFilesTest() throws IOException{
 		operations.delete(null);
 		Map<String,String> metadataMap= buildMetaDataMapToStore();
-		fsService.storeFiles(resource.getInputStream(), metadataMap, (meta) -> new BasicDBObject(meta));
+		fsService.storeFiles(resource.getInputStream(), metadataMap, BasicDBObject::new);
 		 // then
 		 List<GridFSDBFile> files = operations.find(null);
 		 assertTrue(files.size() == 1);

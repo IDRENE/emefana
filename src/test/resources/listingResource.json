@@ -292,15 +292,15 @@
   "feature": "",
   "agree": true,
   "user": {
-    "firstname": "Rashid",
-    "lastname": "James",
-    "emailaddress": "iddyiam@gmail.com",
+    "firstname": "Francis",
+    "lastname": "Joseph",
+    "emailaddress": "iddy85@gmail.com",
     "role": {
       "label": "Manager",
       "value": "MANAGER"
     }
   },
-  "name": "HUMIDITY",
+  "name": "Singida One",
   "category": {
     "type": "Venues"
   },
