@@ -3,6 +3,7 @@
  */
 package com.idrene.emefana.domain;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -55,6 +57,9 @@ public class Provider {
 	@Getter @Setter private int capacity;
 	
 	@Getter @Setter private Price price;
+	
+	@Indexed
+	@Getter @Setter Date registrationDate;
 	
 	@Getter @Setter private String code;
 	

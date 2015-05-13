@@ -33,8 +33,6 @@ public class ListingCreatedEvent implements CreationEvent<ListingResource>{
 		this.anExistingListing = listingExists;
 	}
 
-
-
 	@Override
 	public ListingResource get() {
 		return listingResource;

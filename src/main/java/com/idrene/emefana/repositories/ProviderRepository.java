@@ -3,6 +3,8 @@
  */
 package com.idrene.emefana.repositories;
 
+import java.util.Date;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.Distance;
@@ -29,4 +31,7 @@ public interface ProviderRepository extends MongoRepository<Provider,String>,Pro
 	GeoResults<Provider> findByLocationNearAndNameIgnoreCase(Point location, Distance distance,String name);
 
 	Provider  findByNameIgnoreCase(String name);
+	
+	Page<Provider> findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(Date startDate,Date endDate, Pageable pegiable);
+	Page<Provider> findByActivatedIsTrueAndRegistrationDateBetweenOrderByRegistrationDateAsc(Date startDate,Date endDate, Pageable pegiable);
 }

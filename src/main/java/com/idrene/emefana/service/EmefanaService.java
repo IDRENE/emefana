@@ -5,11 +5,15 @@ package com.idrene.emefana.service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,6 +47,8 @@ public interface EmefanaService {
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria);
 
 	public Optional<Provider> findProviderById(String providerId);
+	
+	public Optional<Page<Provider>> findProvider(boolean active , LocalDate startDate,LocalDate toDate);
 
 	public Optional<User> findUser(User user);
 
@@ -154,6 +160,7 @@ class EmefanaServiceImpl implements EmefanaService {
 		Optional<Provider> dbProvider = Optional.ofNullable(providerRepository.findByNameIgnoreCase(provider.getName()));
 		if(dbProvider.isPresent()) throw new EntityExists(provider.getName() + " exists");
 		provider.setPid(UtilityBean.generateProviderId());
+		provider.setRegistrationDate(DateConvertUtil.asUtilDate(LocalDate.now()));
 		provider.setCode(UtilityBean.generateProviderCode(provider.getPid()));
 		dbProvider = Optional.of(providerRepository.save(provider));
 		return  dbProvider;
@@ -190,6 +197,19 @@ class EmefanaServiceImpl implements EmefanaService {
 			dbUser = Optional.of(userRepository.save(user));
 		}
 		return dbUser;
+	}
+
+	@Override
+	public Optional<Page<Provider>> findProvider(boolean active,LocalDate startDate, LocalDate toDate) {
+		Date date1 = startDate != null ? DateConvertUtil.asUtilDate(startDate) : DateConvertUtil.asUtilDate(LocalDate.now().minusWeeks(1));
+		Date date2 = toDate != null ? DateConvertUtil.asUtilDate(toDate): DateConvertUtil.asUtilDate(LocalDate.now().plusDays(1));
+		Pageable page = new PageRequest(0, 50);
+
+		Page<Provider> providers = active ? 
+				 providerRepository.findByActivatedIsTrueAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page)
+				: providerRepository.findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page);
+				 
+		return Optional.ofNullable(providers);
 	}
 	
 

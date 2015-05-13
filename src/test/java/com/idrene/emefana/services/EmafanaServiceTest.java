@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.geo.GeoResults;
 
 import com.idrene.emefana.AbstractIntegrationTest;
@@ -37,6 +38,7 @@ public class EmafanaServiceTest extends AbstractIntegrationTest{
 	
 	@Autowired
 	PersonRepository userRepository;
+	
 	
 	
 	//@Test
@@ -93,6 +95,18 @@ public class EmafanaServiceTest extends AbstractIntegrationTest{
 						+ gp.getContent().getCategories().toString()
 						));
 		assertTrue(geoResults.get().getAverageDistance().getValue() > 0);
+	}
+	
+	@Test
+	public void findProviderTest(){
+		Optional<Page<Provider>> oproviders = service.findProvider(false, null, null);
+		assertTrue(oproviders.isPresent());
+		Page<Provider> providers = oproviders.get();
+		assertNotNull(providers);
+		assertTrue(providers.getContent().size() > 0);
+		providers.forEach(p -> {
+			System.out.println(p.getName()  + "  " + p.getRegistrationDate() + " " + p.getCode() );
+		});
 	}
 
 }
