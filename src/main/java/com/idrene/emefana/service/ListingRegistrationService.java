@@ -11,6 +11,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
@@ -52,7 +53,8 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 	@Autowired
 	private GridFsService imageService;
 	
-	@Autowired 
+	@Autowired
+	@Qualifier("conversionService")
 	private ConversionService converter;
 	
 	
@@ -108,8 +110,7 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 			}
 			
 		} catch (IOException e) {
-			// TODO log this here
-			e.printStackTrace();
+			logger.error("Exception occered while saving provider thumbnail [ provider :" + providerId + " ]" , e.getCause());
 		}
 	}
 	

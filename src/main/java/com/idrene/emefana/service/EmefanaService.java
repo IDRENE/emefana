@@ -203,8 +203,7 @@ class EmefanaServiceImpl implements EmefanaService {
 	public Optional<Page<Provider>> findProvider(boolean active,LocalDate startDate, LocalDate toDate) {
 		Date date1 = startDate != null ? DateConvertUtil.asUtilDate(startDate) : DateConvertUtil.asUtilDate(LocalDate.now().minusWeeks(1));
 		Date date2 = toDate != null ? DateConvertUtil.asUtilDate(toDate): DateConvertUtil.asUtilDate(LocalDate.now().plusDays(1));
-		Pageable page = new PageRequest(0, 50);
-
+		Pageable page = new PageRequest(0, 50);//TODO change the hard-coded 50 records 
 		Page<Provider> providers = active ? 
 				 providerRepository.findByActivatedIsTrueAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page)
 				: providerRepository.findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page);

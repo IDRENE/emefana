@@ -17,6 +17,7 @@
 		<querydsl.version>3.6.0</querydsl.version>
 		<jasypt.version>1.9.2</jasypt.version>
 		<security.version>3.2.5.RELEASE</security.version>
+		<spring-hateoas.version>0.17.0.RELEASE</spring-hateoas.version>
 	</properties>
 
 	<parent>
@@ -24,8 +25,8 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.3.RELEASE</version>
 	</parent>
-	
-	
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -33,16 +34,25 @@
 			<version>1.14.8</version>
 			<scope>provided</scope>
 		</dependency>
-	<!-- Spring dependencies -->
+		<!-- Spring dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.springframework.hateoas</groupId>
+			<artifactId>spring-hateoas</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.plugin</groupId>
+			<artifactId>spring-plugin-core</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			
 		</dependency>
 
 		<dependency>
@@ -54,7 +64,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
 			<artifactId>spring-hateoas</artifactId>
@@ -65,9 +75,9 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.0</version>
 		</dependency>
-		
+
 		<!-- logging dependencies -->
-		
+
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
@@ -76,7 +86,7 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb-log4j</artifactId>
 		</dependency>
-		
+
 		<!-- MongoDB Driver -->
 		<dependency>
 			<groupId>org.mongodb</groupId>
@@ -122,7 +132,7 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 		</dependency>
-		
+
 		<!-- security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -132,7 +142,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
-		
+
 		<!-- jackon dependencies -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -156,12 +166,12 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.10</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-		
+
 		<!-- Testing dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -203,19 +213,19 @@
 		</plugins>
 		<finalName>e-mefana</finalName>
 	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>jcenter-release</id>
 			<name>jcenter</name>
 			<url>http://oss.jfrog.org/artifactory/oss-release-local/</url>
 		</repository>
-		
-    <repository>
-        <id>repository.springsource.snapshot</id>
-        <name>SpringSource Snapshot Repository</name>
-        <url>http://repo.springsource.org/snapshot</url>
-    </repository>
+
+		<repository>
+			<id>repository.springsource.snapshot</id>
+			<name>SpringSource Snapshot Repository</name>
+			<url>http://repo.springsource.org/snapshot</url>
+		</repository>
 	</repositories>
-	
+
 </project>
