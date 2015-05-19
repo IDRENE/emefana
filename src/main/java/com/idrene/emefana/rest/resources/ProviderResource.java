@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.springframework.hateoas.ResourceSupport;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.idrene.emefana.domain.Address;
 import com.idrene.emefana.domain.Feature;
 import com.idrene.emefana.domain.FileMetadata;
@@ -19,6 +20,7 @@ import com.idrene.emefana.domain.VenuesDetail;
  * @author iddymagohe
  * @since 1.0
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProviderResource extends ResourceSupport {
 
 	/**

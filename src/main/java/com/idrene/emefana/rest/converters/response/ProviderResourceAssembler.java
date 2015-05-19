@@ -18,6 +18,9 @@ import com.idrene.emefana.rest.controllers.ListingResourceController;
 import com.idrene.emefana.rest.resources.ProviderEventsResource;
 import com.idrene.emefana.rest.resources.ProviderResource;
 import com.idrene.emefana.rest.resources.ProviderServiceResource;
+import com.idrene.emefana.rest.resources.ResourceUtil;
+import com.idrene.emefana.rest.resources.ResourceUtil.STATUS;
+import com.idrene.emefana.rest.resources.ResourceView;
 import com.idrene.emefana.util.DateConvertUtil;
 
 /**
@@ -28,10 +31,11 @@ import com.idrene.emefana.util.DateConvertUtil;
 
 public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider, ProviderResource>{
 	
-	//private ResourceView view;
+	private ResourceView view;
 
-	public ProviderResourceAssembler() {
+	public ProviderResourceAssembler(ResourceView view) {
 		super(ListingResourceController.class, ProviderResource.class);
+		this.view = view;
 	}
 
 	@Override
@@ -45,8 +49,8 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		resource.businessDescription = entity.getDescription();
 		resource.providerCategories = entity.getCategories();
 		resource.registereDate = DateConvertUtil.asLocalDate(entity.getRegistrationDate());
-		resource.providerEvents = entity.getEvents().stream().map(ProviderEventsResource::new).collect(toList());
-		resource.providerServices =entity.getServices().stream().map(ProviderServiceResource::new).collect(toList());
+		resource.providerEvents = entity.getEvents().stream().map(e -> new ProviderEventsResource(e, view)).collect(toList());
+		resource.providerServices =entity.getServices().stream().map(s -> new ProviderServiceResource(s, view)).collect(toList());
 		resource.providerFeatures = entity.getFeatures();
 		resource.providerVenues = entity.getVenuesDetails();
 		resource.thumnailPhoto = entity.getThumnailPhoto();
@@ -63,6 +67,15 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		
 		Link usersLink = linkTo(methodOn(ListingResourceController.class).providerUsers(provider.getPid())).withRel("users");
 		links.add(usersLink);
+		
+		if(!ResourceUtil.isSummaryView(view)){
+			Link activationLink = provider.isActivated()?
+					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.deactivate.name())).withRel("deactivation") :
+					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.activate.name())).withRel("activation");
+			
+					links.add(activationLink);
+		}
+		
 		return links;
 		
 	}

@@ -101,7 +101,7 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 	}
 	
 	private void storeProviderThumbnailImage(String providerId, ListingResource listing ){
-		
+		if(listing.getPhoto() == null) return; 
 		try {
 			Optional<InputStream> inputStream = UtilityBean.Base64ToInputStream(Optional.ofNullable(listing.getPhoto().getBase64()));
 			if (inputStream.isPresent()){
@@ -113,9 +113,6 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 			logger.error("Exception occered while saving provider thumbnail [ provider :" + providerId + " ]" , e.getCause());
 		}
 	}
-	
-	
-	
 	
 	
 }

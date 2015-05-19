@@ -58,7 +58,11 @@ public interface EmefanaService {
 	
 	public Optional<User> registerListingContactPerson(User user) ;
 	
+	public List<User> findProviderUsers(String provider);
+	
 	public Optional<Provider> registerProvider(Provider provider) throws EntityExists;
+	
+	public void activateProvider(String providerId, boolean status);
 	//TODO add , retrieval and associated file contents to providers via #{@link #GridFsService}
 	//TODO associate provider user save 
 
@@ -209,6 +213,21 @@ class EmefanaServiceImpl implements EmefanaService {
 				: providerRepository.findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page);
 				 
 		return Optional.ofNullable(providers);
+	}
+
+	@Override
+	public List<User> findProviderUsers(String provider) {
+		return userRepository.findByassociatedProvider(provider);
+	}
+
+	@Override
+	public void activateProvider(String providerId, boolean status) {
+		Optional<Provider> provider = findProviderById(providerId);
+		provider.ifPresent(p -> {
+			p.setActivated(status);
+			providerRepository.save(p);
+		});
+		
 	}
 	
 
