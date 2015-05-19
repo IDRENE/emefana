@@ -48,7 +48,7 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		resource.providerLocation = entity.getLocation();
 		resource.businessDescription = entity.getDescription();
 		resource.providerCategories = entity.getCategories();
-		resource.registereDate = DateConvertUtil.asLocalDate(entity.getRegistrationDate());
+		resource.registeredDate = DateConvertUtil.asLocalDate(entity.getRegistrationDate());
 		resource.providerEvents = entity.getEvents().stream().map(e -> new ProviderEventsResource(e, view)).collect(toList());
 		resource.providerServices =entity.getServices().stream().map(s -> new ProviderServiceResource(s, view)).collect(toList());
 		resource.providerFeatures = entity.getFeatures();
@@ -72,7 +72,6 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 			Link activationLink = provider.isActivated()?
 					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.deactivate.name())).withRel("deactivation") :
 					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.activate.name())).withRel("activation");
-			
 					links.add(activationLink);
 		}
 		

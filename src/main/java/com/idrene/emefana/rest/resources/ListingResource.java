@@ -16,6 +16,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
 import org.springframework.util.CollectionUtils;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -59,6 +61,7 @@ import com.idrene.emefana.rest.resources.types.Venue;
     "fburl",
     "photo"
 })
+@ApiObject
 public class ListingResource {
 
     /**
@@ -66,13 +69,21 @@ public class ListingResource {
      */
 	
     @JsonProperty("venues")
+    @ApiObjectField(name ="venues")
     private List<Venue> venues = new ArrayList<Venue>();
+    
     @JsonProperty("features")
+    @ApiObjectField(name ="features", required=true)
     private List<FeatureResource> features = new ArrayList<FeatureResource>();
+    
     @JsonProperty("services")
+    @ApiObjectField(name ="services" ,  required=true)
     private List<ServiceOffering> services = new ArrayList<ServiceOffering>();
+    
     @JsonProperty("events")
+    @ApiObjectField(name ="events",  required=true)
     private List<EventType> events = new ArrayList<EventType>();
+    
     @JsonProperty("uselocation")
     private Boolean uselocation;
     @JsonProperty("feature")

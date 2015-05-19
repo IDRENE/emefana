@@ -10,6 +10,17 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiBodyObject;
+import org.jsondoc.core.annotation.ApiError;
+import org.jsondoc.core.annotation.ApiErrors;
+import org.jsondoc.core.annotation.ApiHeader;
+import org.jsondoc.core.annotation.ApiHeaders;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiParams;
+import org.jsondoc.core.annotation.ApiQueryParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
+import org.jsondoc.core.pojo.ApiVerb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +54,7 @@ import com.idrene.emefana.service.ListingRegistrationService;
  * @author iddymagohe
  * @since 1.0
  */
+@Api(description = "Provides a set APIs to interact with providers/listings  ", name = "Provider Service")
 @Controller
 public class ListingResourceController {
 	
@@ -56,7 +68,11 @@ public class ListingResourceController {
 
 	private final PagedResourcesAssembler<Provider> pagedAssembler = new PagedResourcesAssembler<>(new HateoasPageableHandlerMethodArgumentResolver(), null);
 	//private final 
-
+	@ApiMethod(path="/provider",verb=ApiVerb.POST, consumes={ MediaType.APPLICATION_JSON_VALUE}, produces={ MediaType.APPLICATION_JSON_VALUE},
+			description= " Privider/Listing registration" , responsestatuscode ="201" )
+	@ApiBodyObject(clazz=ListingResource.class)
+	@ApiResponseObject(clazz = ResponseStatus.class)
+	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"), @ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = { "api/provider" }, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseStatus> registerListing(@RequestBody @Valid ListingResource listing, BindingResult result)throws URISyntaxException {
 		ResponseEntity<ResponseStatus> response = null;
@@ -79,7 +95,10 @@ public class ListingResourceController {
 
 		return response;
 	}
-
+    
+	@ApiMethod(path="/providers",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " List of providers ")
+	@ApiParams(queryparams={@ApiQueryParam(name = "active",  description ="group of providers to return ", required =true, allowedvalues={"0", "1", "true", "false"}, defaultvalue="0")})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@RequestMapping(value = "api/providers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PagedResources<?>> retriveProviders(@RequestParam boolean active) {
 		Optional<Page<Provider>> providers = emefanaService.findProvider(active, null, null);

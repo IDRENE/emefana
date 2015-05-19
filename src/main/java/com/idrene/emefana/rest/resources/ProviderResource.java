@@ -30,7 +30,7 @@ public class ProviderResource extends ResourceSupport {
 	public String providerName;
 	public String businessDescription;
 	public boolean providerActive;
-	public LocalDate registereDate;
+	public LocalDate registeredDate;
 	public double[] providerLocation;
 	public Address providerAddress;
 	public List<ProviderServiceResource> providerServices;
