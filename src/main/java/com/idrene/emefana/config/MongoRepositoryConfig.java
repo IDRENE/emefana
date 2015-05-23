@@ -23,6 +23,7 @@ import com.mongodb.WriteConcern;
 @Configuration
 @EnableMongoRepositories("com.idrene.emefana.repositories")
 public class MongoRepositoryConfig extends AbstractMongoConfiguration {
+	
 	@Value("${db.password}")
 	private String password;
 	

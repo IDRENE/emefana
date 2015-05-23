@@ -18,6 +18,7 @@ import org.jsondoc.core.annotation.ApiHeader;
 import org.jsondoc.core.annotation.ApiHeaders;
 import org.jsondoc.core.annotation.ApiMethod;
 import org.jsondoc.core.annotation.ApiParams;
+import org.jsondoc.core.annotation.ApiPathParam;
 import org.jsondoc.core.annotation.ApiQueryParam;
 import org.jsondoc.core.annotation.ApiResponseObject;
 import org.jsondoc.core.pojo.ApiVerb;
@@ -44,6 +45,7 @@ import com.idrene.emefana.domain.User;
 import com.idrene.emefana.rest.converters.response.ProviderResourceAssembler;
 import com.idrene.emefana.rest.converters.response.UserResourceAssembler;
 import com.idrene.emefana.rest.resources.ListingResource;
+import com.idrene.emefana.rest.resources.ProviderResource;
 import com.idrene.emefana.rest.resources.ResourceUtil.STATUS;
 import com.idrene.emefana.rest.resources.ResourceView;
 import com.idrene.emefana.rest.resources.ResponseStatus;
@@ -68,11 +70,13 @@ public class ListingResourceController {
 
 	private final PagedResourcesAssembler<Provider> pagedAssembler = new PagedResourcesAssembler<>(new HateoasPageableHandlerMethodArgumentResolver(), null);
 	//private final 
-	@ApiMethod(path="/provider",verb=ApiVerb.POST, consumes={ MediaType.APPLICATION_JSON_VALUE}, produces={ MediaType.APPLICATION_JSON_VALUE},
-			description= " Privider/Listing registration" , responsestatuscode ="201" )
+	@ApiMethod(path="api/provider",verb=ApiVerb.POST, consumes={ MediaType.APPLICATION_JSON_VALUE}, produces={ MediaType.APPLICATION_JSON_VALUE},
+			description= " Privider/Listing registration " , responsestatuscode ="201" )
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@ApiBodyObject(clazz=ListingResource.class)
 	@ApiResponseObject(clazz = ResponseStatus.class)
-	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"), @ApiError(code="500",description = "Server error, try again later")})
+	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"), 
+			@ApiError(code="401",description = "Access Denied "), @ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = { "api/provider" }, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseStatus> registerListing(@RequestBody @Valid ListingResource listing, BindingResult result)throws URISyntaxException {
 		ResponseEntity<ResponseStatus> response = null;
@@ -96,16 +100,23 @@ public class ListingResourceController {
 		return response;
 	}
     
-	@ApiMethod(path="/providers",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " List of providers ")
-	@ApiParams(queryparams={@ApiQueryParam(name = "active",  description ="group of providers to return ", required =true, allowedvalues={"0", "1", "true", "false"}, defaultvalue="0")})
+	@ApiMethod(path="api/providers",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " List of providers ")
+	@ApiParams(queryparams={@ApiQueryParam(name = "active",  description ="classification of providers to return ", required =true, allowedvalues={"0", "1", "true", "false"}, defaultvalue="0")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@RequestMapping(value = "api/providers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied ")})
 	public ResponseEntity<PagedResources<?>> retriveProviders(@RequestParam boolean active) {
 		Optional<Page<Provider>> providers = emefanaService.findProvider(active, null, null);
 		ProviderResourceAssembler providerAssembler = new ProviderResourceAssembler(ResourceView.SUMMARY);
 		return ResponseEntity.ok(pagedAssembler.toResource(providers.get(),providerAssembler));
 	}
 
+	@ApiMethod(path="api/providers/{referenceId}",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " Retrieve a provider/listing  by a referenceId ")
+	@ApiParams(pathparams={@ApiPathParam(name = "referenceId",  description ="provider reference identifier ")})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@ApiResponseObject(clazz = ProviderResource.class)
+	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied "), 
+			@ApiError(code="404",description = "Resource not found"), @ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = "api/providers/{referenceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> retrieveProvider(@PathVariable String referenceId) {
 		Optional<Provider> provider = emefanaService.findProviderById(referenceId);
@@ -115,6 +126,11 @@ public class ListingResourceController {
 				.body(new ResponseStatus(HttpStatus.NOT_FOUND.value(),HttpStatus.NOT_FOUND.getReasonPhrase()));
 	}
 
+	
+	@ApiMethod(path="api/providers/{referenceId}/users",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " Retrieve a provider/listing  users by a referenceId ")
+	@ApiParams(pathparams={@ApiPathParam(name = "referenceId",  description ="provider reference identifier ")})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@ApiErrors(apierrors={@ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = "api/providers/{referenceId}/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> providerUsers(@PathVariable String referenceId) {
 		UserResourceAssembler assembler = new UserResourceAssembler(ResourceView.SUMMARY);
@@ -122,7 +138,13 @@ public class ListingResourceController {
 		return ResponseEntity.ok(assembler.toResources(providerUsers)); 
 	}
 	
-
+   
+	@ApiMethod(path="api/providers/{referenceId}/{status}",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " Activates/Deactivates a provider/listing  by a referenceId ")
+	@ApiParams(pathparams={@ApiPathParam(name = "referenceId",  description ="provider reference identifier "), 
+			@ApiPathParam(name = "status",  description =" new status of a provider/listing", allowedvalues={"activate","deactivate"})})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"),
+			@ApiError(code="401",description = "Access Denied "), @ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = "api/providers/{referenceId}/{status}", method = RequestMethod.PUT , produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> activateProvider(@PathVariable String referenceId, @PathVariable String status ) {
 		if(!status.equals(STATUS.activate.name()) && !status.equals(STATUS.deactivate.name())){
