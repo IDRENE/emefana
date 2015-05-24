@@ -170,6 +170,15 @@ public class UtilityBean {
 		return Optional.empty();
 	}
 	
+	
+	
+	
+	/**
+	 * To persist provider related files objects, not user profile photo
+	 * @param providerId
+	 * @param photo
+	 * @return
+	 */
 	public static Map<String, String> photoMetadata(String providerId,Photo photo) {
 		Map<String, String> metadataMap = new HashMap<>();
 		metadataMap.put(MetadataFields.CONTENT_TYPE, photo.getFiletype());

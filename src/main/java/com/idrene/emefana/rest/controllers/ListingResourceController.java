@@ -147,12 +147,14 @@ public class ListingResourceController {
 			@ApiError(code="401",description = "Access Denied "), @ApiError(code="500",description = "Server error, try again later")})
 	@RequestMapping(value = "api/providers/{referenceId}/{status}", method = RequestMethod.PUT , produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> activateProvider(@PathVariable String referenceId, @PathVariable String status ) {
+		
 		if(!status.equals(STATUS.activate.name()) && !status.equals(STATUS.deactivate.name())){
 			ResponseStatus body = new ResponseStatus(HttpStatus.BAD_REQUEST.value(),HttpStatus.BAD_REQUEST.getReasonPhrase());
 			body.addMessage("Unrecognized  action status : " + status + " try with one of [ activate , deactivate ]");
 			
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
 		}
+		
 		boolean activate = status.equals("activate");
 		emefanaService.activateProvider(referenceId, activate);
 		return ResponseEntity.ok().build();

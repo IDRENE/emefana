@@ -18,6 +18,7 @@ import org.springframework.data.geo.GeoResults;
 import com.idrene.emefana.AbstractIntegrationTest;
 import com.idrene.emefana.domain.Booking;
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.domain.ProviderCategories;
 import com.idrene.emefana.domain.SearchCriteria;
 import com.idrene.emefana.domain.User;
 import com.idrene.emefana.repositories.PersonRepository;
@@ -79,10 +80,11 @@ public class EmafanaServiceTest extends AbstractIntegrationTest{
 		SearchCriteria criteria = new SearchCriteria();
 		criteria.setNearLocation(new double[] {-6.769280, 39.229809 });
 		criteria.setCity("Dar es Salaam");
+		criteria.setProviderType(ProviderCategories.Venues.name());
 		criteria.setMaxDistance(100);
 		criteria.setPriceFrom(500000.0);
 		criteria.setPriceTo(1000000.0);
-		criteria.setCapacityFrom(300);
+		criteria.setCapacityFrom(100);
 		criteria.setProviderType("Venues");
 		Optional<GeoResults<Provider>> geoResults = service
 				.searchProvidersByCriteria(criteria);

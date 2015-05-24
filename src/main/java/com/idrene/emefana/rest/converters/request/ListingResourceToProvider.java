@@ -42,7 +42,7 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 		Provider provider = new Provider();
 		provider.setName(resource.getName());
 		provider.setDescription(resource.getDescription());
-		provider.getCategories().add(new ProviderType(resource.getCategory().getType()));//TODO this could be Array from resource
+		provider.getCategories().add(new ProviderType(resource.getCategory().getType()));//TODO this could be Array from resource 
 		provider.setAddress(extractAddress(resource));
 		provider.setLocation(extractLocation(resource,provider.getAddress().getCity().getLocation()));
 		provider.setProviderUser(extractProviderUser(resource));
@@ -97,7 +97,7 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	
 	
 	/**
-	 * TODO To be persisted after setting provider(providerId)
+	 * To be persisted after setting provider(providerId)
 	 * @param resource
 	 * @return
 	 */
@@ -151,8 +151,4 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 		return contacts;
 	}
 	
-	/**
-	 * TODO extract photo
-	 */
-
 }

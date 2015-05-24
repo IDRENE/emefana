@@ -11,6 +11,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,6 +32,7 @@ import com.idrene.emefana.util.UtilityBean;
  */
 @Component
 public class AuthenticationTokenProcessingFilter extends UsernamePasswordAuthenticationFilter{
+	private static final Logger logger = LoggerFactory.getLogger(AuthenticationTokenProcessingFilter.class);
 	
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
@@ -102,7 +105,7 @@ public class AuthenticationTokenProcessingFilter extends UsernamePasswordAuthent
 		try {
 			return UtilityBean.decrypt(authToken, utilityBean.getSECRET_KEY());
 		} catch (Exception e) {
-			// TODO log this Exception
+			logger.error("Error while decrypting token " + e.getMessage(), e.getCause());
 			return authToken;
 		}
 	}

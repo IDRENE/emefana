@@ -8,8 +8,8 @@ import java.util.Optional;
 
 import lombok.Getter;
 
-import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.idrene.emefana.util.UtilityBean;
 import com.mongodb.gridfs.GridFSDBFile;
@@ -22,6 +22,7 @@ import com.mongodb.gridfs.GridFSDBFile;
  */
 
 public class FileMetadata {
+	private static final Logger logger = LoggerFactory.getLogger(FileMetadata.class);
 
 	@Getter
 	private String providerId;
@@ -71,7 +72,7 @@ public class FileMetadata {
 		this.filetype = type;
 		this.userId = userId;
 	}
-	
+	 
 	
 	/**
 	 * Read image from mmongoDB collection in form of #GridFSDBFile to
@@ -91,7 +92,7 @@ public class FileMetadata {
 			try {
 				UtilityBean.InputStreamToBase64(Optional.ofNullable(file.getInputStream()),file.getContentType()).ifPresent(str -> image=str);
 			} catch (Exception e) {
-				//TODO deal with this exception here, log it and move on 
+				logger.error(e.getMessage() , e.getCause());
 			}
 		});
 	}

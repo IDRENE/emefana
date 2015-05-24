@@ -50,13 +50,11 @@ public class Provider {
 	@DBRef
 	@Getter @Setter private Set<ProviderType> categories = new HashSet<>();
 	
-	
-	/**
-	 * TODO Deal with capacity/price collection
+	/*
+	 * used to easy provider search
 	 */
-	@Getter @Setter private int capacity;
-	
-	@Getter @Setter private Price price;
+	@Getter @Setter private int capacity; 
+	@Getter @Setter private Price price; 
 	
 	@Indexed
 	@Getter @Setter Date registrationDate;

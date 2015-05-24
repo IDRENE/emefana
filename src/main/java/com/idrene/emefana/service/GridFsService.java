@@ -41,8 +41,6 @@ public interface GridFsService {
 
 @Service
 class EmefanaGridFsServiceImpl implements GridFsService{
-    
-	//TODO pass filename to search queries for improved performance
 	
 	  @Autowired
 	  private GridFsOperations operations;

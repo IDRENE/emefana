@@ -4,7 +4,6 @@
 package com.idrene.emefana.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.idrene.emefana.domain.Booking;
+import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
+import com.idrene.emefana.domain.FileMetadata;
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.domain.ProviderCategories;
 import com.idrene.emefana.domain.QBooking;
 import com.idrene.emefana.domain.QUser;
 import com.idrene.emefana.domain.SearchCriteria;
@@ -35,6 +37,7 @@ import com.idrene.emefana.repositories.ServiceOfferingRepository;
 import com.idrene.emefana.security.EMEFANA_ROLES;
 import com.idrene.emefana.util.DateConvertUtil;
 import com.idrene.emefana.util.UtilityBean;
+import com.mongodb.gridfs.GridFSDBFile;
 import com.mysema.query.BooleanBuilder;
 
 
@@ -63,8 +66,8 @@ public interface EmefanaService {
 	public Optional<Provider> registerProvider(Provider provider) throws EntityExists;
 	
 	public void activateProvider(String providerId, boolean status);
-	//TODO add , retrieval and associated file contents to providers via #{@link #GridFsService}
-	//TODO associate provider user save 
+	//TODO add , retrieval and associated files contents to providers via #{@link #GridFsService}
+
 
 }
 
@@ -97,18 +100,21 @@ class EmefanaServiceImpl implements EmefanaService {
 
 	@Autowired
 	private UtilityBean utilityBean;
+	
+	@Autowired
+	private GridFsService imageService;
 
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria) {
 		Assert.notNull(criteria, "Criteria must not be null");
-		List<String> bookiedProviders = bookingsByDates(criteria);
-		return Optional.ofNullable(providerRepository.findAllProviders(criteria, Optional.ofNullable(bookiedProviders)));
+		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria)));
 	}
 
 	@Override
 	public Optional<Provider> findProviderById(String providerId) {
 		Assert.notNull(providerId, "providerId must not be null");
 		Provider provider = providerRepository.findOne(providerId);
+	    provider.setThumnailPhoto(retriveProviderThumbnail(provider.getPid()));
 		return Optional.ofNullable(provider);
 	}
 
@@ -170,25 +176,32 @@ class EmefanaServiceImpl implements EmefanaService {
 		return  dbProvider;
 	}
 	
-	private List<String> bookingsByDates(SearchCriteria criteria){
+	
+	/**
+	 * Returns a list of booked providers on that date
+	 * @param criteria
+	 * @return
+	 */
+	private Iterable<Booking> bookingsByDates(SearchCriteria criteria){
 		final QBooking qbooking = QBooking.booking;
 		BooleanBuilder bookingCriteria = new BooleanBuilder();
 		criteria.getOFromDate()
 				.ifPresent(
 						from -> {
-							LocalDate todate = criteria.getOToDate()
-									.isPresent() ? criteria.getOToDate().get()
-									: criteria.getOFromDate().get();
+							LocalDate todate = criteria.getOToDate().isPresent() ? 
+							criteria.getOToDate().get(): criteria.getOFromDate().get();
 							bookingCriteria.and(qbooking.startDate
 									.eq(DateConvertUtil.asUtilDate(from))
 									.or(qbooking.startDate.between(
 											DateConvertUtil.asUtilDate(from),
 											DateConvertUtil.asUtilDate(todate))));
 						});
-		Iterable<Booking> bookedProviders = bookingRepository.findAll(bookingCriteria.getValue());
-		List<String> providerIds = new ArrayList<>() ;
-		bookedProviders.forEach(booking -> providerIds.add(booking.getProvider().getPid()));
-		return providerIds;
+		bookingCriteria.and(criteria.getProviderType().equals(ProviderCategories.Venues.name()) ?
+				qbooking.venueBooking.isTrue() : qbooking.venueBooking.isTrue());
+		
+		bookingCriteria.andNot(qbooking.status.currentState.in(BOOKINGSTATE.CONFIRMED,BOOKINGSTATE.FULFILLMENT));
+		
+		return bookingRepository.findAll(bookingCriteria.getValue());
 	}
 
 	@Override
@@ -227,6 +240,13 @@ class EmefanaServiceImpl implements EmefanaService {
 			p.setActivated(status);
 			providerRepository.save(p);
 		});
+		
+	}
+	
+	private  FileMetadata retriveProviderThumbnail(String providerId){
+		GridFSDBFile thumbnail = imageService.getThumbnailOrVedeoFile(new FileMetadata(providerId, null, null));
+		FileMetadata fileMeta = new FileMetadata(Optional.ofNullable(thumbnail));
+		return fileMeta;
 		
 	}
 	

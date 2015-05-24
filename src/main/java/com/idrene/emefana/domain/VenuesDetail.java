@@ -3,12 +3,11 @@
  */
 package com.idrene.emefana.domain;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.data.annotation.PersistenceConstructor;
-
 import lombok.Getter;
 import lombok.Setter;
+
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.Transient;
 
 /**
  * @author iddymagohe
@@ -18,7 +17,10 @@ public class VenuesDetail {
 	
 	@Getter @Setter private String name;
 	@Getter @Setter private int capacity;
-	@Getter @Setter Price price;
+	@Getter @Setter private Price price;
+	
+	@Transient 
+	@Setter @Getter private boolean booked;
 	
 	public VenuesDetail(String name, int capacity, Double price, String currency) {
 		this.name = name;

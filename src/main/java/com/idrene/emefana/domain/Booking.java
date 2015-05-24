@@ -34,17 +34,21 @@ public class Booking {
 	@Getter @Setter private Provider provider;
 	
 	@DBRef
-	@Getter @Setter EventType event;
+	@Getter @Setter private EventType event;
 	
 	@Indexed
-	@Getter @Setter Date startDate;
+	@Getter @Setter private Date startDate;
 	
 	@Indexed
-	@Getter @Setter Date endDate;
+	@Getter @Setter private  Date endDate;
 	
-	@Getter @Setter BookingStatus status;
+	@Getter @Setter private BookingStatus status;
 	
-	@Getter @Setter private List<BookingService> services = new LinkedList<>();
+	@Getter @Setter private  boolean venueBooking;
+	
+	@Getter @Setter private VenuesDetail  venueDetail;
+	
+	@Getter @Setter private List<BookedService> bookedServices = new LinkedList<>();
 
 	@Override
 	public String toString() {

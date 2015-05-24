@@ -5,8 +5,11 @@ package com.idrene.emefana.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Optional;
+
+import static java.util.stream.Collectors.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +19,11 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 
+import com.idrene.emefana.domain.Price;
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.domain.ProviderCategories;
 import com.idrene.emefana.domain.User;
+import com.idrene.emefana.domain.VenuesDetail;
 import com.idrene.emefana.rest.resources.ListingResource;
 import com.idrene.emefana.service.events.ListingCreatedEvent;
 import com.idrene.emefana.util.UtilityBean;
@@ -73,6 +79,15 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 	public void registerListing(ListingResource listing) {
 		
 		Provider provider = converter.convert(listing, Provider.class);
+		
+		/*
+		 * Set Maxim capacity of Venue-details  at provider level
+		 * Set Minimum price of Venue-details at provider level
+		 */
+		if(listing.getCategory().getType().equals(ProviderCategories.Venues.name())){
+			provider.setCapacity(provider.getVenuesDetails().stream().mapToInt(VenuesDetail::getCapacity).min().getAsInt());
+			provider.setPrice(provider.getVenuesDetails().stream().map(VenuesDetail::getPrice).min(Comparator.comparingDouble(Price::getPrice)).get());
+		}
 		User providerUser = provider.getProviderUser();
 
 		try {
@@ -86,7 +101,6 @@ class ListingRegistrationServiceImpl implements ListingRegistrationService{
 				providerUser.setAssociatedProvider(providerId);
 				Optional<User> dbUser = service.registerListingContactPerson(providerUser);
 				if (!dbUser.isPresent()) logger.warn("Failed to retrieve Provider User after saving  : "+ listing);
-				
 				// Store listing photo
 				storeProviderThumbnailImage(providerId, listing);
 			} else {

@@ -116,9 +116,7 @@ class MailServiceImpl implements MailService{
 			helper.setText("Thank you for Registering with Emefana! test");
 			helper.setSubject("Emefana Hiyoooo");
 		} catch (MessagingException e) {
-			// TODO log this exception
-			//Notify listeners for dbLogging & later re-try
-			e.printStackTrace();
+			logger.error("While sending Test Email  "+ e.getMessage(), e.getCause());
 		}
 		mailSender.send(message);
 	}
@@ -128,8 +126,7 @@ class MailServiceImpl implements MailService{
 		try {
 		logo =	UtilityBean.InputStreamToBase64(Optional.of(resource.getInputStream()), "png").get();
 		} catch (IOException e) {
-			// TODO Log this 
-			e.printStackTrace();
+			logger.error("base64ing logo "+ e.getMessage(), e.getCause());
 		}
 		return logo;
 	}

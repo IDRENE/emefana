@@ -73,7 +73,7 @@ public class TokenController {
 			UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUserId());
 			String token = TokenUtils.createToken(userDetails);
 			response = ResponseEntity.ok(new TokenResource(UtilityBean.encrypt(token, utilityBean.getSECRET_KEY())));
-			//TODO allow clients to store their own SecretKey
+			//TODO Future, allow clients to store their own SecretKey
 		} catch (Exception e) {
 			response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}

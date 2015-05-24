@@ -12,10 +12,10 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
  * @author iddymagohe
  *
  */
-public class BookingService {
+public class BookedService {
 	@Getter @Setter private Price amountDue;
 	@Getter @Setter private Price amountPaid;
 	@DBRef
 	@Getter @Setter private ProviderService providerService;
-	
+
 }
