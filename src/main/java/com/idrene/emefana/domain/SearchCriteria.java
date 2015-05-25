@@ -35,6 +35,15 @@ public class SearchCriteria {
 	@Setter @Getter private Pageable page;
 	@Setter @Getter private int maxDistance = 15;
 	
+	/*
+	 * #Booking related fields  
+	 */
+	@Getter @Setter private User customer;
+	@Getter @Setter private VenuesDetail venue;
+	@Getter @Setter private EventType event;
+	@Getter @Setter private String associatedProvider;
+	@Getter @Setter double price;
+	
 	public Optional<LocalDate> getOFromDate(){
 		return Optional.ofNullable(DateConvertUtil.asLocalDate(fromDate));
 	}

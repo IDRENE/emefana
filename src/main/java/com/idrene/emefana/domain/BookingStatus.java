@@ -18,6 +18,10 @@ public class BookingStatus {
 	@Getter @Setter private Price amountPaid;
 	@Getter @Setter BOOKINGSTATE currentState; 
 	
+	
+	/*
+	 * No new booking for #BOOKINGSTATE.FULFILLMENT, #BOOKINGSTATE.CONFIRMED, status
+	 */
 	public enum BOOKINGSTATE {
 		NEW, CONFIRMED, FULFILLMENT, DONE, CANCELLED
 	}

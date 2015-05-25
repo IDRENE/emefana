@@ -3,12 +3,15 @@
  */
 package com.idrene.emefana.repositories;
 
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-
-import static java.util.stream.Collectors.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
@@ -20,7 +23,6 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.util.CollectionUtils;
 
 import com.idrene.emefana.domain.Booking;
 import com.idrene.emefana.domain.City;
@@ -28,7 +30,6 @@ import com.idrene.emefana.domain.Provider;
 import com.idrene.emefana.domain.ProviderCategories;
 import com.idrene.emefana.domain.SearchCriteria;
 import com.idrene.emefana.domain.VenuesDetail;
-import com.idrene.emefana.util.UtilityBean;
 
 /**
  * @author iddymagohe
@@ -41,7 +42,7 @@ public interface ProviderRepositoryCustom {
 	 * @param providers booked providers on #SearchCriteria.fromDate and #SearchCriteria.toDate
 	 * @return
 	 */
-	public GeoResults<Provider> findAllProviders(SearchCriteria criteria, Iterable<Booking> bookings);
+	public GeoResults<Provider> findAllProviders(SearchCriteria criteria, List<Booking> bookings);
 }
 
 
@@ -54,7 +55,7 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 	private CityRepository cityRepository;
 
 	@Override
-	public GeoResults<Provider> findAllProviders(SearchCriteria searchCriteria,Iterable<Booking> bookings) {
+	public GeoResults<Provider> findAllProviders(SearchCriteria searchCriteria,List<Booking> bookingList) {
 		/*
 		 * Due to limitations of the com.mongodb.BasicDBObject, you can't add a second 
 		 * 'field' expression specified as 'capacity : { "$lte" : 0}'. 
@@ -64,14 +65,15 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 		 * TODO Mark  booked for available venues
 		 * 
 		 */
-		List<Booking> bookingList = UtilityBean.toList(bookings);
+		
 		Map<String, Set<VenuesDetail>> bookedVenuebyprovider = bookingList.stream()
 				.collect(groupingBy( booking -> booking.getProvider().getPid(), mapping((Booking b) -> b.getVenueDetail(), toSet())));
 		
 		Optional<Set<String>> providers = searchCriteria.getProviderType().equals(ProviderCategories.Venues.name()) ?
 				Optional.empty() : Optional.ofNullable(bookedVenuebyprovider.keySet()); 
 				
-		Criteria criteria = new Criteria();
+		Criteria criteria = Criteria.where("activated").is(true); //Only active providers
+		
 		providers.ifPresent(prvs -> criteria.and("pid").nin(prvs)); //don`t consider booked providers (non venues) on the date
 		
 		searchCriteria.getOCapacityFrom().ifPresent( // Minimum capacity
@@ -106,16 +108,16 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 		
 		/*
 		 * Filter-out full booked providers
-		 * TODO Test case to test-out this flow
 		 */
 		if (searchCriteria.getProviderType().equals(ProviderCategories.Venues.name()) && !bookedVenuebyprovider.isEmpty()) {
-			List<? extends GeoResult<Provider>> result = results.getContent().stream()
+			List<GeoResult<Provider>> result = results.getContent().stream()
 					 .filter(r ->{
 						 int sizeBooked = bookedVenuebyprovider.get(r.getContent().getPid()) != null ?
 								 bookedVenuebyprovider.get(r.getContent().getPid()).size() : 0;
 						 return r.getContent().getVenuesDetails().size() > sizeBooked ;
 					 }).collect(toList());
-			results = new GeoResults<Provider>(result,Metrics.KILOMETERS);
+			System.out.println(result.size());
+			return new GeoResults<Provider>(result,Metrics.KILOMETERS);
 		}
 		
 		return results;

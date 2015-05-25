@@ -3,11 +3,18 @@
  */
 package com.idrene.emefana.service;
 
+import static java.util.stream.Collectors.toList;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import static java.util.Comparator.*;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
@@ -19,8 +26,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.idrene.emefana.domain.Booking;
+import com.idrene.emefana.domain.BookingStatus;
 import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 import com.idrene.emefana.domain.FileMetadata;
+import com.idrene.emefana.domain.Price;
 import com.idrene.emefana.domain.Provider;
 import com.idrene.emefana.domain.ProviderCategories;
 import com.idrene.emefana.domain.QBooking;
@@ -36,6 +45,7 @@ import com.idrene.emefana.repositories.ProviderTypeRepository;
 import com.idrene.emefana.repositories.ServiceOfferingRepository;
 import com.idrene.emefana.security.EMEFANA_ROLES;
 import com.idrene.emefana.util.DateConvertUtil;
+import com.idrene.emefana.util.EmefanaIDGenerator;
 import com.idrene.emefana.util.UtilityBean;
 import com.mongodb.gridfs.GridFSDBFile;
 import com.mysema.query.BooleanBuilder;
@@ -63,8 +73,31 @@ public interface EmefanaService {
 	
 	public List<User> findProviderUsers(String provider);
 	
+	
+	/**
+	 * No new booking for #BOOKINGSTATE.FULFILLMENT, #BOOKINGSTATE.CONFIRMED, status
+	 * @param bookingCriteria
+	 * @return
+	 * @throws EntityExists
+	 */
+	public Optional<Booking> bookProvider(SearchCriteria bookingCriteria) throws EntityExists;
+	
+	
+	
+	/**
+	 * Provider or Listing registration
+	 * @param provider
+	 * @return
+	 * @throws EntityExists
+	 */
 	public Optional<Provider> registerProvider(Provider provider) throws EntityExists;
 	
+	
+	/**
+	 * Provider activation 
+	 * @param providerId
+	 * @param status
+	 */
 	public void activateProvider(String providerId, boolean status);
 	//TODO add , retrieval and associated files contents to providers via #{@link #GridFsService}
 
@@ -107,7 +140,7 @@ class EmefanaServiceImpl implements EmefanaService {
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria) {
 		Assert.notNull(criteria, "Criteria must not be null");
-		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria)));
+		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.DONE)));
 	}
 
 	@Override
@@ -178,13 +211,15 @@ class EmefanaServiceImpl implements EmefanaService {
 	
 	
 	/**
-	 * Returns a list of booked providers on that date
+	 * Returns a list of bookings  on that date
 	 * @param criteria
+	 * @param isBooking 
 	 * @return
 	 */
-	private Iterable<Booking> bookingsByDates(SearchCriteria criteria){
+	private List<Booking> bookingsByDates(SearchCriteria criteria, boolean isBooking, BOOKINGSTATE ... exludeStates){
 		final QBooking qbooking = QBooking.booking;
 		BooleanBuilder bookingCriteria = new BooleanBuilder();
+		boolean isVenueBooking = criteria.getProviderType().equals(ProviderCategories.Venues.name());
 		criteria.getOFromDate()
 				.ifPresent(
 						from -> {
@@ -196,12 +231,25 @@ class EmefanaServiceImpl implements EmefanaService {
 											DateConvertUtil.asUtilDate(from),
 											DateConvertUtil.asUtilDate(todate))));
 						});
-		bookingCriteria.and(criteria.getProviderType().equals(ProviderCategories.Venues.name()) ?
-				qbooking.venueBooking.isTrue() : qbooking.venueBooking.isTrue());
+		bookingCriteria.and(isVenueBooking ? qbooking.venueBooking.isTrue() : qbooking.venueBooking.isTrue());
 		
-		bookingCriteria.andNot(qbooking.status.currentState.in(BOOKINGSTATE.CONFIRMED,BOOKINGSTATE.FULFILLMENT));
+		bookingCriteria.and(qbooking.status.currentState.notIn(exludeStates));
 		
-		return bookingRepository.findAll(bookingCriteria.getValue());
+		List<Booking> bookings = UtilityBean.toList(bookingRepository.findAll(bookingCriteria.getValue()));
+		
+		/*
+		 * For booking purpose, return bookings associated with a provider (filter 1 below)
+		 * for a venuebooking consider that venue only (filter 2 below)
+		 */
+		if (isBooking && CollectionUtils.isNotEmpty(bookings)) {
+			bookings = bookings.stream()
+					.filter(b -> b.getProvider().getPid().equals(criteria.getAssociatedProvider()))
+					.filter(b -> {
+						if (!isVenueBooking) return true;
+						return b.isVenueBooking() && b.getVenueDetail().equals(criteria.getVenue());
+					}).collect(toList());
+		}
+		return bookings;
 	}
 
 	@Override
@@ -247,6 +295,53 @@ class EmefanaServiceImpl implements EmefanaService {
 		GridFSDBFile thumbnail = imageService.getThumbnailOrVedeoFile(new FileMetadata(providerId, null, null));
 		FileMetadata fileMeta = new FileMetadata(Optional.ofNullable(thumbnail));
 		return fileMeta;
+		
+	}
+
+	@Override
+	public Optional<Booking> bookProvider(SearchCriteria bookingCriteria)  throws EntityExists{
+		// TODO Notifications (email, text messages) , to provider & consumer
+		Booking booking = createBooking(bookingCriteria);
+		synchronized(this){
+			List<Booking> similarBookings = bookingsByDates(bookingCriteria, true, BOOKINGSTATE.NEW, BOOKINGSTATE.CANCELLED,BOOKINGSTATE.DONE);
+			if (CollectionUtils.isNotEmpty(similarBookings)) throw  new EntityExists(similarBookings.get(0) + " Booking exists");
+				return Optional.ofNullable(bookingRepository.save(booking));
+		}
+		
+	}
+	
+	private Booking createBooking(SearchCriteria bookingCriteria){
+		Assert.notNull(bookingCriteria, "Booking criteria can not be null for a booking");
+		Assert.hasText(bookingCriteria.getAssociatedProvider(), "provider ID can not be null for a booking");
+		Assert.hasText(bookingCriteria.getProviderType(), "Provider type can not br null for a booking");
+		Assert.notNull(bookingCriteria.getEvent(), " Event type can not be null for a booking");
+		boolean isVenue = bookingCriteria.getProviderType().equals(ProviderCategories.Venues.name());
+		if (isVenue) Assert.notNull(bookingCriteria.getVenue(), "Venue details can not be null for a Venue booking");
+		Assert.notNull(bookingCriteria.getCustomer(), "Customer can not be null for a booking");
+		Assert.hasText(bookingCriteria.getCustomer().getEmailAddress(), "Customer EmailAddress can not be null for a booking ");
+		
+		Booking booking = new Booking();
+		booking.setBid(EmefanaIDGenerator.generateProviderId());
+		booking.setCustomer(userRepository.findOne(bookingCriteria.getCustomer().getEmailAddress()));
+		booking.setStartDate(bookingCriteria.getFromDate());
+		booking.setEndDate(bookingCriteria.getToDate());
+		booking.setEvent(bookingCriteria.getEvent());
+		booking.setVenueBooking(isVenue);
+		booking.setProvider(providerRepository.findOne(bookingCriteria.getAssociatedProvider()));
+		
+		Price price = new Price(bookingCriteria.getPrice(),null);
+		
+		if (booking.isVenueBooking()) {
+			booking.setVenueDetail(bookingCriteria.getVenue());
+			int c = comparingDouble(Price::getPrice).compare(price, booking.getVenueDetail().getPrice());
+			price =  c > 0? price : booking.getVenueDetail().getPrice();
+		}else{
+			//TODO associate #BookedService here and calculate price
+		}
+		
+		booking.setStatus(new BookingStatus(price, new Price(BigDecimal.ZERO.doubleValue(),null), BOOKINGSTATE.NEW));
+		
+		return booking;
 		
 	}
 	
