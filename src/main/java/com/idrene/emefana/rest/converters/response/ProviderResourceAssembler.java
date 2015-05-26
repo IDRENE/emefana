@@ -13,7 +13,9 @@ import java.util.List;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
+import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.rest.controllers.BookingResourceController;
 import com.idrene.emefana.rest.controllers.ListingResourceController;
 import com.idrene.emefana.rest.resources.ProviderEventsResource;
 import com.idrene.emefana.rest.resources.ProviderResource;
@@ -72,7 +74,10 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 			Link activationLink = provider.isActivated()?
 					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.deactivate.name())).withRel("deactivation") :
 					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.activate.name())).withRel("activation");
-					links.add(activationLink);
+					
+			Link bookingsLink = linkTo(methodOn(BookingResourceController.class).retrieveProviderBookings(provider.getPid(), BOOKINGSTATE.NEW.name())).withRel("bookings");
+			links.add(activationLink);
+			links.add(bookingsLink);
 		}
 		
 		return links;

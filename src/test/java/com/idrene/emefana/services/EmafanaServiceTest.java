@@ -271,5 +271,14 @@ public class EmafanaServiceTest extends AbstractIntegrationTest{
 			}
 		});
 	}
+	
+	
+	
+	@Test
+	public void findBoookingByProvider(){
+		List<Booking> bookings = service.retrieveProviderBookingByStatus("569c2dc5-ac3d-4c30-8901-70d115047b79", BOOKINGSTATE.CONFIRMED);
+		assertNotNull(bookings);
+		assertFalse(bookings.isEmpty());
+	}
 
 }

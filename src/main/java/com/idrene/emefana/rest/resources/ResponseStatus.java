@@ -33,9 +33,15 @@ public class ResponseStatus {
 		this.statusPhrase = statusPhrase;
 	}
 	
+	public ResponseStatus(int statusCode, String statusPhrase, String message){
+		this(statusCode,statusPhrase);
+		messages.add(message);
+	}
+	
 	public void addMessage(String message){
 		messages.add(message);
 	}
+	
 	
 	
 }

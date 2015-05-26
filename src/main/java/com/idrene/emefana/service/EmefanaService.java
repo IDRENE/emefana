@@ -3,13 +3,11 @@
  */
 package com.idrene.emefana.service;
 
+import static java.util.Comparator.comparingDouble;
 import static java.util.stream.Collectors.toList;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-import static java.util.Comparator.*;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +55,8 @@ import com.mysema.query.BooleanBuilder;
  */
 public interface EmefanaService {
 
+	//TODO Method level security, ProviderUsers, Admin Users & Customer Users
+	
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria);
 
 	public Optional<Provider> findProviderById(String providerId);
@@ -72,15 +72,6 @@ public interface EmefanaService {
 	public Optional<User> registerListingContactPerson(User user) ;
 	
 	public List<User> findProviderUsers(String provider);
-	
-	
-	/**
-	 * No new booking for #BOOKINGSTATE.FULFILLMENT, #BOOKINGSTATE.CONFIRMED, status
-	 * @param bookingCriteria
-	 * @return
-	 * @throws EntityExists
-	 */
-	public Optional<Booking> bookProvider(SearchCriteria bookingCriteria) throws EntityExists;
 	
 	
 	
@@ -101,6 +92,18 @@ public interface EmefanaService {
 	public void activateProvider(String providerId, boolean status);
 	//TODO add , retrieval and associated files contents to providers via #{@link #GridFsService}
 
+
+	/**
+	 * No new booking for #BOOKINGSTATE.FULFILLMENT, #BOOKINGSTATE.CONFIRMED, status
+	 * @param bookingCriteria
+	 * @return
+	 * @throws EntityExists
+	 */
+	public Optional<Booking> bookProvider(SearchCriteria bookingCriteria) throws EntityExists;
+	
+	public Optional<Booking> updateBookingStatus(String bookingId);
+	
+	public  List<Booking> retrieveProviderBookingByStatus(String providerId, BOOKINGSTATE state);
 
 }
 
@@ -266,7 +269,7 @@ class EmefanaServiceImpl implements EmefanaService {
 
 	@Override
 	public Optional<Page<Provider>> findProvider(boolean active,LocalDate startDate, LocalDate toDate) {
-		Date date1 = startDate != null ? DateConvertUtil.asUtilDate(startDate) : DateConvertUtil.asUtilDate(LocalDate.now().minusWeeks(1));
+		Date date1 = startDate != null ? DateConvertUtil.asUtilDate(startDate) : DateConvertUtil.asUtilDate(LocalDate.now().minusWeeks(4));
 		Date date2 = toDate != null ? DateConvertUtil.asUtilDate(toDate): DateConvertUtil.asUtilDate(LocalDate.now().plusDays(1));
 		Pageable page = new PageRequest(0, 50);//TODO change the hard-coded 50 records 
 		Page<Provider> providers = active ? 
@@ -343,6 +346,17 @@ class EmefanaServiceImpl implements EmefanaService {
 		
 		return booking;
 		
+	}
+
+	@Override
+	public Optional<Booking> updateBookingStatus(String bookingId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Booking> retrieveProviderBookingByStatus(String providerId,BOOKINGSTATE state) {
+		return bookingRepository.findByProviderPidAndStatusCurrentState(providerId, state);
 	}
 	
 
