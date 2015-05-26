@@ -3,15 +3,19 @@
  */
 package com.idrene.emefana.rest.converters.response;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 
 import com.idrene.emefana.domain.Booking;
+import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 import com.idrene.emefana.rest.controllers.BookingResourceController;
+import com.idrene.emefana.rest.controllers.ListingResourceController;
 import com.idrene.emefana.rest.resources.BookingResource;
 import com.idrene.emefana.rest.resources.ResourceUtil;
 import com.idrene.emefana.rest.resources.ResourceView;
@@ -55,9 +59,15 @@ public class BookingResourceAssembler extends ResourceAssemblerSupport<Booking, 
 		List<Link> links = new ArrayList<>();
 		Link selfLink = isProvider ? 
 				linkTo(methodOn(BookingResourceController.class).retrieveProviderBooking(entity.getProvider().getPid(), entity.getBid())).withSelfRel()
-				: null;
+				: null; //TODO user link
 				
 				links.add(selfLink);
+				
+		Link providerLink = linkTo(methodOn(ListingResourceController.class).retrieveProvider(entity.getProvider().getPid())).withRel("provider");
+		links.add(providerLink);
+		
+		BOOKINGSTATE state = entity.getStatus().getCurrentState();
+		//TODO state links based on user and provider
 				
 		return links;
 		

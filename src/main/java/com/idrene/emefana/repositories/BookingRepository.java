@@ -18,5 +18,11 @@ import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 public interface BookingRepository extends MongoRepository<Booking, String>,QueryDslPredicateExecutor<Booking>{
 	
 	public List<Booking> findByProviderPidAndStatusCurrentState(String pid, BOOKINGSTATE state);
+	
+	public List<Booking> findByCustomerIdAndStatusCurrentState(String customerId, BOOKINGSTATE state);
+	
+	public Booking findByBidAndProviderPid(String bid, String pid);
+	
+	public Booking findByBidAndCustomerId(String bid, String pid);
 
 }

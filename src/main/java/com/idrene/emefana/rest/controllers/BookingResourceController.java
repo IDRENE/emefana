@@ -4,6 +4,8 @@
 package com.idrene.emefana.rest.controllers;
 
 import java.net.URI;
+import java.util.List;
+import java.util.Optional;
 
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
@@ -30,7 +32,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.idrene.emefana.domain.Booking;
+import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 import com.idrene.emefana.domain.SearchCriteria;
+import com.idrene.emefana.rest.converters.response.BookingResourceAssembler;
+import com.idrene.emefana.rest.resources.ResourceView;
 import com.idrene.emefana.rest.resources.ResponseStatus;
 import com.idrene.emefana.service.EmefanaService;
 import com.idrene.emefana.service.EntityExists;
@@ -85,8 +91,11 @@ public class BookingResourceController {
 			@ApiPathParam(name = "booking-referenceId",  description ="booking reference identifier ")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings/{booking-referenceId}", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?>retrieveProviderBooking(@PathVariable("provider-referenceId") String providerId, @PathVariable String bookingId){
-		return null;
+	public ResponseEntity<?>retrieveProviderBooking(@PathVariable("provider-referenceId") String providerId, @PathVariable("booking-referenceId") String bookingId){
+		BookingResourceAssembler assembler = new BookingResourceAssembler(ResourceView.DETAILS, true);
+		Optional<Booking> booking = emefanaService.retrieveProviderBooking(bookingId, providerId);
+		return booking.isPresent() ? ResponseEntity.ok(assembler.toResource(booking.get())) :
+			                         ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseStatus(HttpStatus.NO_CONTENT.value(), HttpStatus.NO_CONTENT.getReasonPhrase())) ;
 	}
 	
 	@ApiMethod(path="/api/providers/{provider-referenceId}/bookings", description="Retrieve  all bookings  to a particular provider")
@@ -94,11 +103,13 @@ public class BookingResourceController {
 	         queryparams={@ApiQueryParam(name="bookingState", defaultvalue="NEW", description = "Retrive bookings with in this particular state")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?>retrieveProviderBookings(@PathVariable("provider-referenceId") String providerId , @RequestParam(required =false, defaultValue="NEW") String bookingState ){
-		return null;
+	public ResponseEntity<?>retrieveProviderBookings(@PathVariable("provider-referenceId") String providerId , @RequestParam(required =false , defaultValue="NEW") String bookingState ){
+		BookingResourceAssembler assembler = new BookingResourceAssembler(ResourceView.SUMMARY, true);
+		List<Booking> bookings = emefanaService.retrieveProviderBookingsByStatus(providerId, BOOKINGSTATE.valueOf(bookingState));
+		return ResponseEntity.ok(assembler.toResources(bookings));
 	}
 	
-	
+	//TODO add booking Update resource
 	
 	
 }

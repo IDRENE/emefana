@@ -101,9 +101,15 @@ public interface EmefanaService {
 	 */
 	public Optional<Booking> bookProvider(SearchCriteria bookingCriteria) throws EntityExists;
 	
-	public Optional<Booking> updateBookingStatus(String bookingId);
+	public Optional<Booking> updateBookingStatus(String bookingId,String providerOrcustomerId ,BOOKINGSTATE newState );
 	
-	public  List<Booking> retrieveProviderBookingByStatus(String providerId, BOOKINGSTATE state);
+	public  List<Booking> retrieveProviderBookingsByStatus(String providerId, BOOKINGSTATE state);
+	
+	public Optional<Booking> retrieveProviderBooking(String bookingId, String providerId);
+	
+	public List<Booking> retrieveUserBookingsByStatus(String userId, BOOKINGSTATE state);
+	
+	public Optional<Booking> retrieveUserBooking(String bookingId, String userId);
 
 }
 
@@ -348,16 +354,42 @@ class EmefanaServiceImpl implements EmefanaService {
 		
 	}
 
+	
 	@Override
-	public Optional<Booking> updateBookingStatus(String bookingId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Booking> retrieveProviderBookingsByStatus(String providerId,BOOKINGSTATE state) {
+		return bookingRepository.findByProviderPidAndStatusCurrentState(providerId, state);
 	}
 
 	@Override
-	public List<Booking> retrieveProviderBookingByStatus(String providerId,BOOKINGSTATE state) {
-		return bookingRepository.findByProviderPidAndStatusCurrentState(providerId, state);
+	public Optional<Booking> retrieveProviderBooking(String bookingId,String providerId) {
+		return Optional.ofNullable(bookingRepository.findByBidAndProviderPid(bookingId, providerId));
 	}
+
+	@Override
+	public List<Booking> retrieveUserBookingsByStatus(String userId,BOOKINGSTATE state) {
+		return bookingRepository.findByCustomerIdAndStatusCurrentState(userId, state);
+	}
+
+	@Override
+	public Optional<Booking> retrieveUserBooking(String bookingId,String userId) {
+		return Optional.ofNullable(bookingRepository.findByBidAndCustomerId(bookingId, userId));
+	}
+
+	@Override
+	public Optional<Booking> updateBookingStatus(String bookingId,String providerOrcustomerId ,BOOKINGSTATE newState) {
+		// TODO Validate state specific changes
+		Optional<Booking> bookingToUpdate = Optional.empty();
+		Booking booking = bookingRepository.findOne(bookingId);
+		if (null != booking ){
+			 if (booking.getProvider().getPid().equals(providerOrcustomerId) || booking.getCustomer().getId().equals(providerOrcustomerId) ){
+				 booking.getStatus().setCurrentState(newState);
+				 bookingRepository.save(booking);
+				 bookingToUpdate = Optional.of(booking);
+			 }
+		}
+		return bookingToUpdate;
+	}
+
 	
 
 }
