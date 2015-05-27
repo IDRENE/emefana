@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.web.HateoasPageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -70,14 +71,14 @@ public class ListingResourceController {
 
 	private final PagedResourcesAssembler<Provider> pagedAssembler = new PagedResourcesAssembler<>(new HateoasPageableHandlerMethodArgumentResolver(), null);
 	//private final 
-	@ApiMethod(path="api/provider",verb=ApiVerb.POST, consumes={ MediaType.APPLICATION_JSON_VALUE}, produces={ MediaType.APPLICATION_JSON_VALUE},
+	@ApiMethod(path="api/provider",verb=ApiVerb.POST, consumes={ MediaType.APPLICATION_JSON_VALUE}, produces={MediaType.APPLICATION_JSON_VALUE},
 			description= " Privider/Listing registration " , responsestatuscode ="201" )
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@ApiBodyObject(clazz=ListingResource.class)
 	@ApiResponseObject(clazz = ResponseStatus.class)
 	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"), 
 			@ApiError(code="401",description = "Access Denied "), @ApiError(code="500",description = "Server error, try again later")})
-	@RequestMapping(value = { "api/provider" }, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = { "api/provider" }, method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponseStatus> registerListing(@RequestBody @Valid ListingResource listing, BindingResult result)throws URISyntaxException {
 		ResponseEntity<ResponseStatus> response = null;
 		if (result.hasErrors()) {
@@ -117,7 +118,7 @@ public class ListingResourceController {
 	@ApiResponseObject(clazz = ProviderResource.class)
 	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied "), 
 			@ApiError(code="404",description = "Resource not found"), @ApiError(code="500",description = "Server error, try again later")})
-	@RequestMapping(value = "api/providers/{referenceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "api/providers/{referenceId}", method = RequestMethod.GET, produces ={ MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> retrieveProvider(@PathVariable String referenceId) {
 		Optional<Provider> provider = emefanaService.findProviderById(referenceId);
 		ProviderResourceAssembler providerAssembler = new ProviderResourceAssembler(ResourceView.DETAILS);
@@ -131,7 +132,7 @@ public class ListingResourceController {
 	@ApiParams(pathparams={@ApiPathParam(name = "referenceId",  description ="provider reference identifier ")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@ApiErrors(apierrors={@ApiError(code="500",description = "Server error, try again later")})
-	@RequestMapping(value = "api/providers/{referenceId}/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "api/providers/{referenceId}/users", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?> providerUsers(@PathVariable String referenceId) {
 		UserResourceAssembler assembler = new UserResourceAssembler(ResourceView.SUMMARY);
 		List<User> providerUsers = emefanaService.findProviderUsers(referenceId);
@@ -145,7 +146,7 @@ public class ListingResourceController {
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@ApiErrors(apierrors={@ApiError(code="400",description = "Bad request, correct the errors and retry"),
 			@ApiError(code="401",description = "Access Denied "), @ApiError(code="500",description = "Server error, try again later")})
-	@RequestMapping(value = "api/providers/{referenceId}/{status}", method = RequestMethod.PUT , produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "api/providers/{referenceId}/{status}", method = RequestMethod.PUT , produces = {MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> activateProvider(@PathVariable String referenceId, @PathVariable String status ) {
 		
 		if(!status.equals(STATUS.activate.name()) && !status.equals(STATUS.deactivate.name())){

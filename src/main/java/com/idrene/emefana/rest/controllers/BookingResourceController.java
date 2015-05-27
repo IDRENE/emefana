@@ -62,7 +62,7 @@ public class BookingResourceController {
 	@ApiParams(pathparams={@ApiPathParam(name = "provider-referenceId",  description ="provider reference identifier ")})
 	@ApiBodyObject(clazz=SearchCriteria.class)
 	@ApiResponseObject(clazz=ResponseStatus.class)
-	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings", method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE, produces={MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?> bookProvider(@PathVariable("provider-referenceId") String providerId, @RequestBody SearchCriteria bookingCriteria ,BindingResult result) {
 		
 		ResponseEntity<ResponseStatus> response = null;
@@ -90,7 +90,7 @@ public class BookingResourceController {
 	@ApiParams(pathparams={@ApiPathParam(name = "provider-referenceId",  description ="provider reference identifier "),
 			@ApiPathParam(name = "booking-referenceId",  description ="booking reference identifier ")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
-	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings/{booking-referenceId}", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings/{booking-referenceId}", method=RequestMethod.GET,produces={MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<?>retrieveProviderBooking(@PathVariable("provider-referenceId") String providerId, @PathVariable("booking-referenceId") String bookingId){
 		BookingResourceAssembler assembler = new BookingResourceAssembler(ResourceView.DETAILS, true);
 		Optional<Booking> booking = emefanaService.retrieveProviderBooking(bookingId, providerId);
@@ -102,7 +102,7 @@ public class BookingResourceController {
 	@ApiParams(pathparams={@ApiPathParam(name = "provider-referenceId",  description ="provider reference identifier ")},
 	         queryparams={@ApiQueryParam(name="bookingState", defaultvalue="NEW", description = "Retrive bookings with in this particular state")})
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
-	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/api/providers/{provider-referenceId}/bookings", method=RequestMethod.GET,produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<?>retrieveProviderBookings(@PathVariable("provider-referenceId") String providerId , @RequestParam(required =false , defaultValue="NEW") String bookingState ){
 		BookingResourceAssembler assembler = new BookingResourceAssembler(ResourceView.SUMMARY, true);
 		List<Booking> bookings = emefanaService.retrieveProviderBookingsByStatus(providerId, BOOKINGSTATE.valueOf(bookingState));
