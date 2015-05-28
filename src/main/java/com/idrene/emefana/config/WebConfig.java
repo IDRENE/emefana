@@ -4,8 +4,11 @@
 package com.idrene.emefana.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.idrene.emefana.rest.controllers.RequestResponseLogger;
 
 /**
  * @author iddymagohe
@@ -20,5 +23,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 				.addResourceLocations("classpath:META-INF/resources/")
 				.setCachePeriod(0);
 	}
+
+	/* (non-Javadoc)
+	 * @see org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter#addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry)
+	 */
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new RequestResponseLogger());
+		super.addInterceptors(registry);
+	}
+	
+	
 
 }
