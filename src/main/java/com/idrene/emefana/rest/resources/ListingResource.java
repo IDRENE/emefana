@@ -11,9 +11,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.jsondoc.core.annotation.ApiObject;
@@ -52,6 +54,8 @@ import com.idrene.emefana.rest.resources.types.Venue;
     "description",
     "country",
     "location",
+    "latitude",
+    "longitude",
     "city",
     "streetaddress",
     "additionalstreetaddress",
@@ -85,7 +89,7 @@ public class ListingResource {
     private List<EventType> events = new ArrayList<EventType>();
     
     @JsonProperty("uselocation")
-    private Boolean uselocation;
+    private boolean uselocation;
     @JsonProperty("feature")
     private String feature;
     @JsonProperty("agree")
@@ -120,6 +124,9 @@ public class ListingResource {
     private Photo photo;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    
+    @Getter @Setter double latitude;
+    @Getter @Setter double longitude;
 
     /**
      * 
@@ -210,7 +217,7 @@ public class ListingResource {
      *     The uselocation
      */
     @JsonProperty("uselocation")
-    public Boolean getUselocation() {
+    public boolean getUselocation() {
         return uselocation;
     }
 
@@ -220,7 +227,7 @@ public class ListingResource {
      *     The uselocation
      */
     @JsonProperty("uselocation")
-    public void setUselocation(Boolean uselocation) {
+    public void setUselocation(boolean uselocation) {
         this.uselocation = uselocation;
     }
 
@@ -554,7 +561,7 @@ public class ListingResource {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return name; 
     }
 
     @JsonAnyGetter

@@ -20,25 +20,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
-    "speed",
-    "heading",
-    "altitudeAccuracy",
-    "accuracy",
-    "altitude",
     "longitude",
     "latitude"
 })
 public class Location {
 
-    @JsonProperty("speed")
+    @JsonIgnore
     private Object speed;
-    @JsonProperty("heading")
+    
+    @JsonIgnore
     private Object heading;
-    @JsonProperty("altitudeAccuracy")
+    @JsonIgnore
     private Object altitudeAccuracy;
-    @JsonProperty("accuracy")
+    @JsonIgnore
     private Integer accuracy;
-    @JsonProperty("altitude")
+    @JsonIgnore
     private Object altitude;
     @JsonProperty("longitude")
     private Double longitude;
@@ -52,7 +48,7 @@ public class Location {
      * @return
      *     The speed
      */
-    @JsonProperty("speed")
+    //@JsonProperty("speed")
     public Object getSpeed() {
         return speed;
     }
@@ -62,7 +58,7 @@ public class Location {
      * @param speed
      *     The speed
      */
-    @JsonProperty("speed")
+    //@JsonProperty("speed")
     public void setSpeed(Object speed) {
         this.speed = speed;
     }
@@ -72,7 +68,7 @@ public class Location {
      * @return
      *     The heading
      */
-    @JsonProperty("heading")
+    //@JsonProperty("heading")
     public Object getHeading() {
         return heading;
     }
@@ -82,7 +78,7 @@ public class Location {
      * @param heading
      *     The heading
      */
-    @JsonProperty("heading")
+    //@JsonProperty("heading")
     public void setHeading(Object heading) {
         this.heading = heading;
     }
@@ -92,7 +88,7 @@ public class Location {
      * @return
      *     The altitudeAccuracy
      */
-    @JsonProperty("altitudeAccuracy")
+   // @JsonProperty("altitudeAccuracy")
     public Object getAltitudeAccuracy() {
         return altitudeAccuracy;
     }
@@ -102,7 +98,7 @@ public class Location {
      * @param altitudeAccuracy
      *     The altitudeAccuracy
      */
-    @JsonProperty("altitudeAccuracy")
+   // @JsonProperty("altitudeAccuracy")
     public void setAltitudeAccuracy(Object altitudeAccuracy) {
         this.altitudeAccuracy = altitudeAccuracy;
     }
@@ -112,7 +108,7 @@ public class Location {
      * @return
      *     The accuracy
      */
-    @JsonProperty("accuracy")
+    //@JsonProperty("accuracy")
     public Integer getAccuracy() {
         return accuracy;
     }
@@ -122,7 +118,7 @@ public class Location {
      * @param accuracy
      *     The accuracy
      */
-    @JsonProperty("accuracy")
+   // @JsonProperty("accuracy")
     public void setAccuracy(Integer accuracy) {
         this.accuracy = accuracy;
     }
@@ -132,7 +128,7 @@ public class Location {
      * @return
      *     The altitude
      */
-    @JsonProperty("altitude")
+    //@JsonProperty("altitude")
     public Object getAltitude() {
         return altitude;
     }
@@ -142,7 +138,7 @@ public class Location {
      * @param altitude
      *     The altitude
      */
-    @JsonProperty("altitude")
+   // @JsonProperty("altitude")
     public void setAltitude(Object altitude) {
         this.altitude = altitude;
     }

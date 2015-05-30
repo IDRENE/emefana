@@ -61,7 +61,7 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 		
 		return provider;
 	}
-	
+	 
 	/**
 	 * @param resource
 	 * @return
@@ -87,8 +87,8 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	private double[] extractLocation(ListingResource resource, double[] defaultLocation){
 		double[] location = new double[2];
 		if(resource.getUselocation()){
-			location[0] = resource.getLocation().getLatitude();
-			location[1] = resource.getLocation().getLongitude();
+			location[0] = resource.getLatitude();
+			location[1] = resource.getLongitude();
 		}else{
 			location = defaultLocation;
 		}
