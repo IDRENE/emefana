@@ -5,6 +5,8 @@ package com.idrene.emefana.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,8 +84,10 @@ class MetaServiceImpl implements MetaService{
 		 * Cities
 		 * lsof -n -i4TCP:$PORT | grep LISTEN
 		 */
+		
+		//Comparator<City> cityCompare = Comparator.comparing(City::getCid);
 		List<City> cities = cityRepository.findAll();
-		metaResources.add(new MetaResource<City>(METATYPES.CITIES.name(),cities));
+		metaResources.add(new MetaResource<City>(METATYPES.CITIES.name(),cities.stream().sorted(comparing(City::getCid)).collect(toList())));
 		
 		/*
 		 * Countries
@@ -95,19 +99,19 @@ class MetaServiceImpl implements MetaService{
 		 *ServiceOffering
 		 */
 		List<ServiceOffering> services = serviceOfferingRepository.findAll();
-		metaResources.add(new MetaResource<ServiceOffering>(METATYPES.SERVICES.name(),services));
+		metaResources.add(new MetaResource<ServiceOffering>(METATYPES.SERVICES.name(),services.stream().sorted(comparing(ServiceOffering::getSid)).collect(toList())));
 		
 		/*
 		 * Event types
 		 */
 		List<EventType> events = eventRepository.findAll();
-		metaResources.add(new MetaResource<EventType>(METATYPES.EVENTS.name(),events));
+		metaResources.add(new MetaResource<EventType>(METATYPES.EVENTS.name(),events.stream().sorted(comparing(EventType::getEid)).collect(toList())));
 		
 		/*
 		 * Provider categories
 		 */
 		List<ProviderType> providerCategories = providerCategoryRepository.findAll();
-		metaResources.add(new MetaResource<ProviderType>(METATYPES.PROVIDER_CATEGORIES.name(),providerCategories));
+		metaResources.add(new MetaResource<ProviderType>(METATYPES.PROVIDER_CATEGORIES.name(),providerCategories.stream().sorted(comparing(ProviderType::getType)).collect(toList())));
 		
 		return metaResources;
 	}
