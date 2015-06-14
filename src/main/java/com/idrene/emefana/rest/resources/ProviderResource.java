@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
+import org.springframework.data.geo.Distance;
 import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -65,6 +66,12 @@ public class ProviderResource extends ResourceSupport {
 	@ApiObjectField(name = "providerEvents", description= "events types , served by a provider")
 	public List<ProviderEventsResource> providerEvents;
 	
+	@ApiObjectField(name = "distance", description= "distance , to provider location")
+	public Distance distance;
+	
 	@ApiObjectField(name = "thumnailPhoto", description= "events types , thumbnail photo")
 	public FileMetadata thumnailPhoto;
+	
+	@ApiObjectField(name = "photo gallery", description= "provider's  , photos")
+	public List<FileMetadata> gallaryPhotos;
 }

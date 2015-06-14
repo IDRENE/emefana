@@ -26,9 +26,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.GeoResult;
+import org.springframework.data.geo.GeoResults;
 import org.springframework.data.web.HateoasPageableHandlerMethodArgumentResolver;
 import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.PagedResources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -42,11 +44,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.idrene.emefana.domain.Provider;
+import com.idrene.emefana.domain.SearchCriteria;
 import com.idrene.emefana.domain.User;
 import com.idrene.emefana.rest.converters.response.ProviderResourceAssembler;
+import com.idrene.emefana.rest.converters.response.SearchProviderResourceAssembler;
 import com.idrene.emefana.rest.converters.response.UserResourceAssembler;
 import com.idrene.emefana.rest.resources.ListingResource;
 import com.idrene.emefana.rest.resources.ProviderResource;
+import com.idrene.emefana.rest.resources.ProvidersSearchResult;
 import com.idrene.emefana.rest.resources.ResourceUtil.STATUS;
 import com.idrene.emefana.rest.resources.ResourceView;
 import com.idrene.emefana.rest.resources.ResponseStatus;
@@ -160,5 +165,39 @@ public class ListingResourceController {
 		emefanaService.activateProvider(referenceId, activate);
 		return ResponseEntity.ok().build();
 	}
+	
+	@ApiMethod(path="api/search/providers",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " List of availble providers ")
+	@ApiParams(queryparams={@ApiQueryParam(name = "city",  description ="classification of providers to return ", required =true)})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@RequestMapping(value = "api/search/providers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied ")})
+	public ResponseEntity<ProvidersSearchResult> searchProviders(SearchCriteria searchCriteria) {
+		Optional<GeoResults<Provider>>  providersResults = emefanaService.searchProvidersByCriteria(searchCriteria);
+		SearchProviderResourceAssembler providerAssembler = new SearchProviderResourceAssembler(ResourceView.SUMMARY);
+		List<ProviderResource> providers = providerAssembler.toResources(providersResults.get().getContent());
+		return ResponseEntity.ok(new ProvidersSearchResult(providers, providersResults.get().getAverageDistance()));
+	}
+	
+	@ApiMethod(path="api/search/providers/{referenceId}",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " Retrieve active provider/listing  by a referenceId ")
+	@ApiParams(pathparams={@ApiPathParam(name = "referenceId",  description ="provider reference identifier ")})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@ApiResponseObject(clazz = ProviderResource.class)
+	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied "), 
+			@ApiError(code="404",description = "Resource not found"), @ApiError(code="500",description = "Server error, try again later")})
+	@RequestMapping(value = "api/search/providers/{referenceId}", method = RequestMethod.GET, produces ={ MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> searchProvider(@PathVariable String referenceId) {
+		Optional<Provider> provider = emefanaService.findActiveProviderById(referenceId);
+		ProviderResource resource =null;
+		if (provider.isPresent()){
+			SearchProviderResourceAssembler providerAssembler = new SearchProviderResourceAssembler(ResourceView.DETAILS);
+			 resource = providerAssembler.toResource(new GeoResult<Provider>(provider.get(), new Distance(0)));
+		}
+		
+		return provider.isPresent() ? ResponseEntity.ok(resource) 
+				: ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(new ResponseStatus(HttpStatus.NOT_FOUND.value(),HttpStatus.NOT_FOUND.getReasonPhrase()));
+	}
+	
+	
 
 }

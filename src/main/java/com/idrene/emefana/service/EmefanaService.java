@@ -61,6 +61,9 @@ public interface EmefanaService {
 
 	public Optional<Provider> findProviderById(String providerId);
 	
+	public Optional<Provider> findActiveProviderById(String providerId);
+	
+	
 	public Optional<Page<Provider>> findProvider(boolean active , LocalDate startDate,LocalDate toDate);
 
 	public Optional<User> findUser(User user);
@@ -149,15 +152,31 @@ class EmefanaServiceImpl implements EmefanaService {
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria) {
 		Assert.notNull(criteria, "Criteria must not be null");
-		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.DONE)));
+		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.CANCELLED)));
 	}
 
 	@Override
 	public Optional<Provider> findProviderById(String providerId) {
 		Assert.notNull(providerId, "providerId must not be null");
 		Provider provider = providerRepository.findOne(providerId);
-	    provider.setThumnailPhoto(retriveProviderThumbnail(provider.getPid()));
-		return Optional.ofNullable(provider);
+		Optional<Provider> oProvider = Optional.ofNullable(provider);
+		oProvider.ifPresent(p-> {
+			 p.setThumnailPhoto(retriveProviderThumbnail(provider.getPid()));
+		});
+	   
+		return oProvider;
+	}
+	
+	@Override
+	public Optional<Provider> findActiveProviderById(String providerId) {
+		Assert.notNull(providerId, "providerId must not be null");
+		Provider provider = providerRepository.findByPidAndActivatedIsTrue(providerId);
+		Optional<Provider> oProvider = Optional.ofNullable(provider);
+		oProvider.ifPresent(p-> {
+			 //p.setThumnailPhoto(retriveProviderThumbnail(provider.getPid())); don`t need this for provider details of public site
+			//TODO build photo gallery
+		});
+		return oProvider;
 	}
 
 	@Override

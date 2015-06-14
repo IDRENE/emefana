@@ -116,7 +116,6 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 								 bookedVenuebyprovider.get(r.getContent().getPid()).size() : 0;
 						 return r.getContent().getVenuesDetails().size() > sizeBooked ;
 					 }).collect(toList());
-			System.out.println(result.size());
 			return new GeoResults<Provider>(result,Metrics.KILOMETERS);
 		}
 		

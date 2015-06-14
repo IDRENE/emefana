@@ -89,6 +89,10 @@ public class SearchCriteriaValidator implements Validator{
 
 		}else{
 			//TODO Validate public providers search
+			// TODO validate city
+			// TODO validate near location
+			// TODO verify all providers are considered if no event dates are passed
+			
 		}
 	}
 

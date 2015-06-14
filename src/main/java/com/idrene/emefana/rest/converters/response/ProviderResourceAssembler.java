@@ -70,6 +70,7 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		Link usersLink = linkTo(methodOn(ListingResourceController.class).providerUsers(provider.getPid())).withRel("users");
 		links.add(usersLink);
 		
+		//Detailed resource view
 		if(!ResourceUtil.isSummaryView(view)){
 			Link activationLink = provider.isActivated()?
 					linkTo(methodOn(ListingResourceController.class).activateProvider(provider.getPid(), STATUS.deactivate.name())).withRel("deactivation") :

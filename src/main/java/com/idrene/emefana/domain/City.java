@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection="cities")
 @TypeAlias("cities")
 public class City {
+	//TODO Switch to google places city,region,country
 	@Id
 	@Getter @Setter private String cid;
 	

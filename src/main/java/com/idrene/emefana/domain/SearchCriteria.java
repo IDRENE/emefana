@@ -19,12 +19,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.idrene.emefana.rest.resources.ResourceUtil;
 import com.idrene.emefana.util.DateConvertUtil;
 
 /**
  * @author iddymagohe
  *
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiObject
 public class SearchCriteria {
 	@JsonIgnore
@@ -37,10 +40,10 @@ public class SearchCriteria {
 	@JsonIgnore
 	@Setter private Date toDate;
 	
-	@Getter @Setter private double[] nearLocation;
+	@Getter private double[] nearLocation;// longitude, latitude
 	@Getter @Setter private Double priceFrom;
 	@Getter @Setter private Double priceTo;
-	@Getter @Setter private String city;
+	@Getter private String city;
 	@Getter @Setter private int capacityFrom;
 	@Getter @Setter private int capacityTo;
 	@Getter @Setter private String[] features; 
@@ -48,6 +51,8 @@ public class SearchCriteria {
 	@Getter @Setter private String providerType;//category
 	@Setter @Getter private Pageable page;
 	@Setter @Getter private int maxDistance = 15;
+	
+	@Getter @Setter private String nearLocationStr;
 	
 	@ApiObjectField(name ="fromDateAsString", description="event start date", format="yyyy-MM-dd HH:mm:ss.SSS")
 	@Getter @Setter String fromDateAsString;
@@ -58,11 +63,37 @@ public class SearchCriteria {
 	@JsonIgnore
 	@Setter @Getter private String usedAs;
 	
+
+
+	/**
+	 * @param nearLocation the nearLocation to set
+	 */
+	public void setNearLocation(double[] nearLocation) {
+		if (StringUtils.hasText(nearLocationStr))
+			this.nearLocation = ResourceUtil.nearLocationString(nearLocationStr);
+		else
+		this.nearLocation = nearLocation;
+	}
+	
+	
+
 	/*
 	 * #Booking related fields  
 	 */
 	@ApiObjectField(name ="customer", description="A user or customer who booking a service")
 	@Getter @Setter private User customer;
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		if (city.contains(",")) 
+			this.city = city.split(",")[0]; //TODO correct this
+		else
+		this.city = city;
+	}
+
+
+
 	@ApiObjectField(name ="venue", description="A venue to book, applicable to venue booking")
 	@Getter @Setter private VenuesDetail venue;
 	

@@ -32,6 +32,8 @@ public interface ProviderRepository extends MongoRepository<Provider,String>,Pro
 
 	Provider  findByNameIgnoreCase(String name);
 	
+	Provider findByPidAndActivatedIsTrue(String providerId);
+	
 	Page<Provider> findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(Date startDate,Date endDate, Pageable pegiable);
 	Page<Provider> findByActivatedIsTrueAndRegistrationDateBetweenOrderByRegistrationDateAsc(Date startDate,Date endDate, Pageable pegiable);
 }
