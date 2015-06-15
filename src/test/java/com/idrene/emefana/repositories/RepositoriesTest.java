@@ -48,6 +48,7 @@ import com.idrene.emefana.domain.ProviderEvents;
 import com.idrene.emefana.domain.ProviderService;
 import com.idrene.emefana.domain.ProviderType;
 import com.idrene.emefana.domain.QProvider;
+import com.idrene.emefana.domain.SearchCriteria;
 import com.idrene.emefana.domain.ServiceOffering;
 import com.idrene.emefana.domain.User;
 import com.idrene.emefana.util.DateConvertUtil;
@@ -292,6 +293,7 @@ public class RepositoriesTest extends AbstractIntegrationTest {
 				provider -> provider.setAddress(new Address("",city)));
 	}
 	
+	@Ignore
 	@Test
 	public void updateProviderEvent(){
 		List<Provider> prvs = providerRepository.findAll();
@@ -393,6 +395,18 @@ public class RepositoriesTest extends AbstractIntegrationTest {
 		assertNotNull(geoResults);
 		geoResults.forEach(gp -> System.out.println(gp.getContent().getName() + " - " + gp.getDistance()));
 		assertTrue(geoResults.getAverageDistance().getValue() > 0);
+	}
+	
+
+	
+	@Test
+	public void closestestPointsToTerm(){
+
+		GeoResults<Provider> geoResults = providerRepository.findAllProviders("Dar es");
+		
+		assertNotNull(geoResults);
+		geoResults.forEach(gp -> System.out.println(gp.getContent().getName() + " - " + gp.getContent().getScore()));
+
 	}
 	
 	@Ignore

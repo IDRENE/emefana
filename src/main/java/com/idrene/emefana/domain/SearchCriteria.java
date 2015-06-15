@@ -40,6 +40,10 @@ public class SearchCriteria {
 	@JsonIgnore
 	@Setter private Date toDate;
 	
+	@Getter @Setter String eventDate;
+	
+	@Getter @Setter Integer eventDays;
+	
 	@Getter private double[] nearLocation;// longitude, latitude
 	@Getter @Setter private Double priceFrom;
 	@Getter @Setter private Double priceTo;
@@ -62,8 +66,8 @@ public class SearchCriteria {
 	
 	@JsonIgnore
 	@Setter @Getter private String usedAs;
-	
 
+	@Getter @Setter String name;
 
 	/**
 	 * @param nearLocation the nearLocation to set

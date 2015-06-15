@@ -67,6 +67,7 @@ public class BookingResourceController {
 		
 		ResponseEntity<ResponseStatus> response = null;
 		bookingCriteria.setAssociatedProvider(providerId);
+		bookingCriteria.setUsedAs("booking");
 		searchValidator.validate(bookingCriteria, result);
 		if (result.hasErrors()) {
 			ResponseStatus body = new ResponseStatus(HttpStatus.BAD_REQUEST.value(),HttpStatus.BAD_REQUEST.getReasonPhrase());

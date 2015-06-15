@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toList;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -58,6 +59,8 @@ public interface EmefanaService {
 	//TODO Method level security, ProviderUsers, Admin Users & Customer Users
 	
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria);
+	
+	public Optional<GeoResults<Provider>> searchProvidersByNameOrDescription(String searchingTerm);
 
 	public Optional<Provider> findProviderById(String providerId);
 	
@@ -245,6 +248,9 @@ class EmefanaServiceImpl implements EmefanaService {
 	 * @return
 	 */
 	private List<Booking> bookingsByDates(SearchCriteria criteria, boolean isBooking, BOOKINGSTATE ... exludeStates){
+		
+		if (!criteria.getOFromDate().isPresent()) return new ArrayList<>(); // don`t proceed with booking evaluation if no event dates provided
+		
 		final QBooking qbooking = QBooking.booking;
 		BooleanBuilder bookingCriteria = new BooleanBuilder();
 		boolean isVenueBooking = criteria.getProviderType().equals(ProviderCategories.Venues.name());
@@ -258,23 +264,25 @@ class EmefanaServiceImpl implements EmefanaService {
 									.or(qbooking.startDate.between(
 											DateConvertUtil.asUtilDate(from),
 											DateConvertUtil.asUtilDate(todate))));
+							
+							bookingCriteria.and(qbooking.status.currentState.notIn(exludeStates)); // consider states when there is date
+
 						});
-		bookingCriteria.and(isVenueBooking ? qbooking.venueBooking.isTrue() : qbooking.venueBooking.isTrue());
-		
-		bookingCriteria.and(qbooking.status.currentState.notIn(exludeStates));
+		bookingCriteria.and(isVenueBooking ? qbooking.venueBooking.isTrue() : qbooking.venueBooking.isFalse());
+
 		
 		List<Booking> bookings = UtilityBean.toList(bookingRepository.findAll(bookingCriteria.getValue()));
 		
 		/*
 		 * For booking purpose, return bookings associated with a provider (filter 1 below)
-		 * for a venuebooking consider that venue only (filter 2 below)
+		 * for a venuebooking() consider that specific that specific #VenueDetail,  (filter 2 below)
 		 */
 		if (isBooking && CollectionUtils.isNotEmpty(bookings)) {
 			bookings = bookings.stream()
-					.filter(b -> b.getProvider().getPid().equals(criteria.getAssociatedProvider()))
+					.filter(b -> b.getProvider().getPid().equals(criteria.getAssociatedProvider())) // provider specific , filter1
 					.filter(b -> {
 						if (!isVenueBooking) return true;
-						return b.isVenueBooking() && b.getVenueDetail().equals(criteria.getVenue());
+						return b.isVenueBooking() && b.getVenueDetail().equals(criteria.getVenue()); // #VenueDetail specific , filter 2
 					}).collect(toList());
 		}
 		return bookings;
@@ -300,7 +308,6 @@ class EmefanaServiceImpl implements EmefanaService {
 		Page<Provider> providers = active ? 
 				 providerRepository.findByActivatedIsTrueAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page)
 				: providerRepository.findByActivatedIsFalseAndRegistrationDateBetweenOrderByRegistrationDateAsc(date1, date2, page);
-				 
 		return Optional.ofNullable(providers);
 	}
 
@@ -407,6 +414,11 @@ class EmefanaServiceImpl implements EmefanaService {
 			 }
 		}
 		return bookingToUpdate;
+	}
+
+	@Override
+	public Optional<GeoResults<Provider>> searchProvidersByNameOrDescription(String searchingTerm) {
+		return Optional.ofNullable(providerRepository.findAllProviders(searchingTerm));
 	}
 
 	

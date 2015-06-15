@@ -23,6 +23,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.TextCriteria;
+import org.springframework.data.mongodb.core.query.TextQuery;
+import org.springframework.util.Assert;
 
 import com.idrene.emefana.domain.Booking;
 import com.idrene.emefana.domain.City;
@@ -43,6 +46,13 @@ public interface ProviderRepositoryCustom {
 	 * @return
 	 */
 	public GeoResults<Provider> findAllProviders(SearchCriteria criteria, List<Booking> bookings);
+	
+	/**
+	 * Mainly Search provider term  in #Provider[name, businessDescription]
+	 * @param SearchingTerm TODO
+	 * @return
+	 */
+	public GeoResults<Provider> findAllProviders(String SearchingTerm);
 }
 
 
@@ -121,7 +131,17 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 		
 		return results;
 	}
-	
-	
+
+	@Override
+	public GeoResults<Provider> findAllProviders(String searchingTerm) {
+		Assert.hasText(searchingTerm, "Search term can not be null");
+		TextCriteria criteria = TextCriteria.forDefaultLanguage().matching(searchingTerm);
+		Query query = TextQuery.queryText(criteria).sortByScore();
+		
+		List<Provider> providers = mongoOperations.find(query, Provider.class);
+		List<GeoResult<Provider>> result = providers.stream().map(p -> new GeoResult<Provider>(p,new Distance(0))).collect(toList());
+		return  new GeoResults<Provider>(result,Metrics.KILOMETERS);
+	}
+
 
 }

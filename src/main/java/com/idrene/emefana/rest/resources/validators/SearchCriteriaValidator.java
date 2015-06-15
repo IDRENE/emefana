@@ -5,6 +5,7 @@ package com.idrene.emefana.rest.resources.validators;
 
 import java.util.Date;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -88,11 +89,20 @@ public class SearchCriteriaValidator implements Validator{
 			}
 
 		}else{
-			//TODO Validate public providers search
-			// TODO validate city
-			// TODO validate near location
-			// TODO verify all providers are considered if no event dates are passed
+			if (!StringUtils.hasText(bookingCriteria.getCity())){
+				errors.rejectValue("city", null, "a city for  availble providers is a required field");
+			}
 			
+			if (!StringUtils.hasText(bookingCriteria.getProviderType())){
+				errors.rejectValue("providerType", null, "provider category is a required field");
+			}
+			
+			if(!StringUtils.hasText(bookingCriteria.getNearLocationStr()) && CollectionUtils.sizeIsEmpty(bookingCriteria.getNearLocation())){
+				errors.rejectValue("nearLocation", null, "nearest Location is a required field");
+			}
+
+			return;
+            
 		}
 	}
 

@@ -25,6 +25,7 @@ import org.jsondoc.core.pojo.ApiVerb;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResult;
@@ -36,7 +37,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,6 +76,10 @@ public class ListingResourceController {
 
 	@Autowired
 	private EmefanaService emefanaService;
+	
+	@Autowired
+	@Qualifier("searchCriteriaValidator")
+	private Validator searchValidator;
 
 	private final PagedResourcesAssembler<Provider> pagedAssembler = new PagedResourcesAssembler<>(new HateoasPageableHandlerMethodArgumentResolver(), null);
 	//private final 
@@ -171,8 +178,35 @@ public class ListingResourceController {
 	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
 	@RequestMapping(value = "api/search/providers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied ")})
-	public ResponseEntity<ProvidersSearchResult> searchProviders(SearchCriteria searchCriteria) {
+	public ResponseEntity<?> searchProviders(SearchCriteria searchCriteria , BindingResult result) {
+		
+		searchCriteria.setUsedAs("search");
+		searchValidator.validate(searchCriteria, result);
+		if (result.hasErrors()) {
+			ResponseStatus body = new ResponseStatus(HttpStatus.BAD_REQUEST.value(),HttpStatus.BAD_REQUEST.getReasonPhrase());
+			result.getAllErrors().forEach(e -> body.addMessage(e.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(body);
+		}
+		
 		Optional<GeoResults<Provider>>  providersResults = emefanaService.searchProvidersByCriteria(searchCriteria);
+		SearchProviderResourceAssembler providerAssembler = new SearchProviderResourceAssembler(ResourceView.SUMMARY);
+		List<ProviderResource> providers = providerAssembler.toResources(providersResults.get().getContent());
+		return ResponseEntity.ok(new ProvidersSearchResult(providers, providersResults.get().getAverageDistance()));
+	}
+	
+	@ApiMethod(path="api/search-term/providers",  produces={ MediaType.APPLICATION_JSON_VALUE},description= " List of availble providers with name or description")
+	@ApiParams(queryparams={@ApiQueryParam(name = "searchingTerm",  description ="Name or description searching teram ", required =true)})
+	@ApiHeaders(headers={@ApiHeader(name="X-Auth-Token", description = "Authentication Token")})
+	@RequestMapping(value = "api/search-term/providers", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiErrors(apierrors={@ApiError(code="401",description = "Access Denied ")})
+	public ResponseEntity<?> searchProvidersByTerm(@RequestParam String searchingTerm) {
+
+		if (!StringUtils.hasText(searchingTerm)) {
+			ResponseStatus body = new ResponseStatus(HttpStatus.BAD_REQUEST.value(),HttpStatus.BAD_REQUEST.getReasonPhrase(),"Searching Term is a required Field");
+			return ResponseEntity.badRequest().body(body);
+		}
+
+		Optional<GeoResults<Provider>>  providersResults = emefanaService.searchProvidersByNameOrDescription(searchingTerm);
 		SearchProviderResourceAssembler providerAssembler = new SearchProviderResourceAssembler(ResourceView.SUMMARY);
 		List<ProviderResource> providers = providerAssembler.toResources(providersResults.get().getContent());
 		return ResponseEntity.ok(new ProvidersSearchResult(providers, providersResults.get().getAverageDistance()));

@@ -18,6 +18,7 @@ public class VenuesDetail {
 	@Getter @Setter private String name;
 	@Getter @Setter private int capacity;
 	@Getter @Setter private Price price;
+	//TODO type{indoor | outdoor}
 	
 	@Transient 
 	@Setter @Getter private boolean booked;
