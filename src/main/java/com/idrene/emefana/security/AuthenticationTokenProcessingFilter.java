@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,6 +40,9 @@ public class AuthenticationTokenProcessingFilter extends UsernamePasswordAuthent
 
 	@Autowired
 	private  UtilityBean utilityBean;
+	
+	@Value("${api.user.id}")
+	private String API_USER;
 	
 	/* (non-Javadoc)
 	 * @see org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter#setAuthenticationManager(org.springframework.security.authentication.AuthenticationManager)
@@ -76,7 +80,7 @@ public class AuthenticationTokenProcessingFilter extends UsernamePasswordAuthent
 
 		if (userName != null) {
 			UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
-			if (TokenUtils.validateToken(authToken, userDetails)) {
+			if (TokenUtils.validateToken(authToken, userDetails, usr -> !API_USER.equals(usr))) {
 				UsernamePasswordAuthenticationToken authentication =new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
 				SecurityContextHolder.getContext().setAuthentication(authentication);
