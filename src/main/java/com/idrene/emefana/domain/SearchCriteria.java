@@ -119,6 +119,8 @@ public class SearchCriteria {
 	}
 	
 	public Optional<double[]> getONearLocation(){
+		if (StringUtils.hasText(nearLocationStr))
+			this.nearLocation = ResourceUtil.nearLocationString(nearLocationStr); //TODO correct this after asking user`s location
 		return Optional.ofNullable(nearLocation);
 	}
 	

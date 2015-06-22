@@ -139,7 +139,7 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 		Query query = TextQuery.queryText(criteria).sortByScore();
 		
 		List<Provider> providers = mongoOperations.find(query, Provider.class);
-		List<GeoResult<Provider>> result = providers.stream().map(p -> new GeoResult<Provider>(p,new Distance(0))).collect(toList());
+		List<GeoResult<Provider>> result = providers.stream().filter(Provider::isActivated).map(p -> new GeoResult<Provider>(p,new Distance(0))).collect(toList());
 		return  new GeoResults<Provider>(result,Metrics.KILOMETERS);
 	}
 
