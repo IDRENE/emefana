@@ -26,7 +26,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "cid",
     "region",
     "country",
-    "location"
+    "location",
+    "strLocation"
 })
 public class CityResource {
 
@@ -38,7 +39,26 @@ public class CityResource {
     private String country;
     @JsonProperty("location")
     private List<Double> location = new ArrayList<Double>();
-    @JsonIgnore
+    
+    @JsonProperty("strLocation")
+    private String strLocation;
+    /**
+	 * @return the strLocation
+	 */
+    @JsonProperty("strLocation")
+	public String getStrLocation() {
+		return strLocation;
+	}
+
+	/**
+	 * @param strLocation the strLocation to set
+	 */
+    @JsonProperty("strLocation")
+	public void setStrLocation(String strLocation) {
+		this.strLocation = strLocation;
+	}
+
+	@JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
