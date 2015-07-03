@@ -40,6 +40,7 @@ public class ListingResourceToProviderTest extends AbstractIntegrationTest{
 		assertTrue(provider.getFeatures().size() > 0);
 		assertTrue(provider.getServices().size() > 0);
 		assertNotNull(provider.getProviderUser());
+		System.out.println(provider.getAddress().getCity());
 		
 	}
 

@@ -26,6 +26,7 @@ import com.idrene.emefana.domain.ProviderType;
 import com.idrene.emefana.domain.User;
 import com.idrene.emefana.domain.VenuesDetail;
 import com.idrene.emefana.rest.resources.ListingResource;
+import com.idrene.emefana.rest.resources.ResourceUtil;
 import com.idrene.emefana.security.EMEFANA_ROLES;
 
 /**
@@ -66,11 +67,26 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	 * @param resource
 	 * @return
 	 */
-	private Address extractAddress(ListingResource resource) {
+	@SuppressWarnings("unused")
+	private Address extractAddressSaveCities(ListingResource resource) {
 		double[] location = new double[2];
-		//TODO Deal with strLocation 
+	
 		location[0] = resource.getCity().getLocation().get(0);
 		location[1] = resource.getCity().getLocation().get(1);
+		City city = new City();
+		city.setCid(resource.getCity().getCid());
+		city.setLocation(location);
+		Address address = new Address(resource.getStreetaddress(), city);
+		address.setStreetLine2(resource.getAdditionalstreetaddress());
+		return address;
+
+	}
+	
+	private Address extractAddress(ListingResource resource) {
+		double[] location = ResourceUtil.nearLocationString(resource.getCity().getStrLocation());
+		double temp = location[0];
+		location[0]=location[1];
+		location[1]=temp;
 		City city = new City();
 		city.setCid(resource.getCity().getCid());
 		city.setLocation(location);

@@ -3,6 +3,8 @@
  */
 package com.idrene.emefana.domain;
 
+import java.util.Arrays;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -78,6 +80,17 @@ public class City {
 			return false;
 		return true;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "City [cid=" + cid + ", region=" + region + ", country="
+				+ country + ", location=" + Arrays.toString(location) + "]";
+	}
+	
+	
 	
 
 }

@@ -27,6 +27,7 @@ import org.springframework.util.Assert;
 import com.idrene.emefana.domain.Booking;
 import com.idrene.emefana.domain.BookingStatus;
 import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
+import com.idrene.emefana.domain.City;
 import com.idrene.emefana.domain.FileMetadata;
 import com.idrene.emefana.domain.Price;
 import com.idrene.emefana.domain.Provider;
@@ -78,8 +79,8 @@ public interface EmefanaService {
 	public Optional<User> registerListingContactPerson(User user) ;
 	
 	public List<User> findProviderUsers(String provider);
-	
-	
+    
+	public void saveCityIfNotPresent(City city);
 	
 	/**
 	 * Provider or Listing registration
@@ -155,7 +156,9 @@ class EmefanaServiceImpl implements EmefanaService {
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria) {
 		Assert.notNull(criteria, "Criteria must not be null");
-		return Optional.ofNullable(providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.CANCELLED)));
+		GeoResults<Provider> prvs = providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.CANCELLED));
+		retrieveThumbnailsForProvidersFromGeoResult(prvs);
+		return Optional.ofNullable(prvs);
 	}
 
 	@Override
@@ -233,6 +236,7 @@ class EmefanaServiceImpl implements EmefanaService {
 		Assert.notNull(provider, "Provider must not be null");
 		Optional<Provider> dbProvider = Optional.ofNullable(providerRepository.findByNameIgnoreCase(provider.getName()));
 		if(dbProvider.isPresent()) throw new EntityExists(provider.getName() + " exists");
+		saveCityIfNotPresent(provider.getAddress().getCity());
 		provider.setPid(UtilityBean.generateProviderId());
 		provider.setRegistrationDate(DateConvertUtil.asUtilDate(LocalDate.now()));
 		provider.setCode(UtilityBean.generateProviderCode(provider.getPid()));
@@ -326,10 +330,16 @@ class EmefanaServiceImpl implements EmefanaService {
 		
 	}
 	
+	
+	/**
+	 * Returns if no  thumb-nail found
+	 * @param providerId
+	 * @return
+	 */
 	private  FileMetadata retriveProviderThumbnail(String providerId){
 		GridFSDBFile thumbnail = imageService.getThumbnailOrVedeoFile(new FileMetadata(providerId, null, null));
 		FileMetadata fileMeta = new FileMetadata(Optional.ofNullable(thumbnail));
-		return fileMeta;
+		return thumbnail !=null ? fileMeta :null;
 		
 	}
 
@@ -418,7 +428,26 @@ class EmefanaServiceImpl implements EmefanaService {
 
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByNameOrDescription(String searchingTerm) {
-		return Optional.ofNullable(providerRepository.findAllProviders(searchingTerm));
+		GeoResults<Provider> prvs = providerRepository.findAllProviders(searchingTerm);
+		retrieveThumbnailsForProvidersFromGeoResult(prvs);
+		return Optional.ofNullable(prvs);
+	}
+
+	@Override
+	public void saveCityIfNotPresent(City city) {
+      Assert.notNull(city, "City can not be null");
+      Assert.notNull(city.getCid(), "City Id can not be null or empty");
+      if(null == cityRepository.findByCidIgnoreCase(city.getCid())){
+    	  cityRepository.save(city);
+      }
+		
+	}
+	
+	private void retrieveThumbnailsForProvidersFromGeoResult(GeoResults<Provider> geos){
+       if(null != geos && !CollectionUtils.isEmpty(geos.getContent())){
+    	   geos.getContent().forEach(p -> p.getContent().setThumnailPhoto(retriveProviderThumbnail(p.getContent().getPid())));
+		}
+		
 	}
 
 	
