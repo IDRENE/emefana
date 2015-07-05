@@ -178,10 +178,7 @@ class EmefanaServiceImpl implements EmefanaService {
 		Assert.notNull(providerId, "providerId must not be null");
 		Provider provider = providerRepository.findByPidAndActivatedIsTrue(providerId);
 		Optional<Provider> oProvider = Optional.ofNullable(provider);
-		oProvider.ifPresent(p-> {
-			 //p.setThumnailPhoto(retriveProviderThumbnail(provider.getPid())); don`t need this for provider details of public site
-			//TODO build photo gallery
-		});
+		oProvider.ifPresent(p-> p.setGallaryPhotos(retrievePhotogallery(p.getPid())));//Setting photo-gallery for the provider
 		return oProvider;
 	}
 
@@ -332,7 +329,7 @@ class EmefanaServiceImpl implements EmefanaService {
 	
 	
 	/**
-	 * Returns if no  thumb-nail found
+	 * Returns null if no  thumb-nail found
 	 * @param providerId
 	 * @return
 	 */
@@ -341,6 +338,20 @@ class EmefanaServiceImpl implements EmefanaService {
 		FileMetadata fileMeta = new FileMetadata(Optional.ofNullable(thumbnail));
 		return thumbnail !=null ? fileMeta :null;
 		
+	}
+	
+	/**
+	 * Returns null if no photos. 
+	 * @param providerId
+	 * @return
+	 */
+	private List<FileMetadata> retrievePhotogallery(String providerId){
+		List<GridFSDBFile> photos = imageService.getAllProviderPhotos(new FileMetadata(providerId, null, null));
+		if (!CollectionUtils.isEmpty(photos)){
+			return photos.stream().map(photo -> new FileMetadata(Optional.ofNullable(photo))).collect(toList());
+		}
+		
+		return null;
 	}
 
 	@Override

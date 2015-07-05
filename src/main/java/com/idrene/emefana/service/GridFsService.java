@@ -75,7 +75,7 @@ class EmefanaGridFsServiceImpl implements GridFsService{
 
 	@Override
 	public List<GridFSDBFile> getAllProviderPhotos(FileMetadata searchCriteria) {
-		Assert.notNull(searchCriteria,"Search criteria for thumbnail can not be null");
+		Assert.notNull(searchCriteria,"Search criteria for photo gallery can not be null");
 		Criteria criteria = new Criteria(getMetaField(MetadataFields.TYPE)).is(searchCriteria.oType().orElse(FILETYPE.PHOTO.name()));
 		searchCriteria.oProviderId().ifPresent(provider -> criteria.and(getMetaField(MetadataFields.PROVIDER_ID)).is(provider));
 		return operations.find(query(criteria));
