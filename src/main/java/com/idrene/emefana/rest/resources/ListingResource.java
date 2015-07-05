@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.idrene.emefana.domain.EventType;
+import com.idrene.emefana.domain.ProviderService;
 import com.idrene.emefana.domain.ServiceOffering;
 import com.idrene.emefana.rest.resources.types.Category;
 import com.idrene.emefana.rest.resources.types.CityResource;
@@ -82,7 +83,7 @@ public class ListingResource {
     
     @JsonProperty("services")
     @ApiObjectField(name ="services" ,  required=true)
-    private List<ServiceOffering> services = new ArrayList<ServiceOffering>();
+    private List<ProviderService> services = new ArrayList<ProviderService>();
     
     @JsonProperty("events")
     @ApiObjectField(name ="events",  required=true)
@@ -176,7 +177,7 @@ public class ListingResource {
      */
     @NotEmpty(message = "Services can not empty")
     @JsonProperty("services")
-    public List<ServiceOffering> getServices() {
+    public List<ProviderService> getServices() {
         return services;
     }
 
@@ -186,7 +187,7 @@ public class ListingResource {
      *     The services
      */
     @JsonProperty("services")
-    public void setServices(List<ServiceOffering> services) {
+    public void setServices(List<ProviderService> services) {
         this.services = services;
     }
 

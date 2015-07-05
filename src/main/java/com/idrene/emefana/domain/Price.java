@@ -33,4 +33,7 @@ public class Price {
 
 	}
 
+	public Price() {
+	}
+
 }

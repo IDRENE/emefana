@@ -18,23 +18,36 @@
     }
   ],
   "services": [
-    {
-      "sid": "flashy",
-      "providerTypes": [
-        {
-          "type": "Venues"
-        }
-      ]
+    { "service" :{
+	      "sid": "flashy",
+	      "providerTypes": [
+	        {
+	          "type": "Venues"
+	        }
+	      ]
+	    },
+	   "description": "decription 1",
+	   "price" :{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
+	   
     },
-    {
-      "sid": "handsomely",
-      "providerTypes": [
-        {
-          "type": "Venues"
-        }
-      ]
+    { "service" :{
+	      "sid": "handsomely",
+	      "providerTypes": [
+	        {
+	          "type": "Venues"
+	        }
+	      ]
+	    },
+	   "description": "decription 2",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
     },
-    {
+    { "service" : {
       "sid": "rampant",
       "providerTypes": [
         {
@@ -48,7 +61,13 @@
         }
       ]
     },
-    {
+    "description": "description 3",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
+    },
+    { "service" : {
       "sid": "snobbish",
       "providerTypes": [
         {
@@ -62,7 +81,13 @@
         }
       ]
     },
-    {
+    "description": "description 4",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
+    },
+    { "service" : {
       "sid": "lunch",
       "providerTypes": [
         {
@@ -79,7 +104,13 @@
         }
       ]
     },
-    {
+    "description": "description 5",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
+    },
+     { "service" : {
       "sid": "contain",
       "providerTypes": [
         {
@@ -96,7 +127,13 @@
         }
       ]
     },
-    {
+    "description": "description 6",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
+    },
+    { "service" : {
       "sid": "squeal",
       "providerTypes": [
         {
@@ -115,6 +152,12 @@
           "type": "Catering"
         }
       ]
+    },
+    "description": "description 7",
+		"price":{
+		    "price": 2376,
+	        "currency": "TZS"
+	        }
     }
   ],
   "events": [

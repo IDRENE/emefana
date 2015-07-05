@@ -42,6 +42,8 @@ public class ListingResourceToProviderTest extends AbstractIntegrationTest{
 		assertNotNull(provider.getProviderUser());
 		System.out.println(provider.getAddress().getCity());
 		
+		//provider.getServices().stream().forEach(s -> System.out.println(s.getService().getSid() + " - " + s.getDescription() + " " + s.getPrice().getCurrency() + " " + s.getPrice().getPrice()));
+		
 	}
 
 }

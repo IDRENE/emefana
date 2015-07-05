@@ -48,7 +48,7 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 		provider.setLocation(extractLocation(resource,provider.getAddress().getCity().getLocation()));
 		provider.setProviderUser(extractProviderUser(resource));
 		provider.setContacts(extractContacts(resource));
-		provider.setServices(extarctListItems(resource.getServices(),offering -> new ProviderService(offering,"")));
+		provider.setServices(resource.getServices());
 		provider.setFeatures(extarctListItems(resource.getFeatures(),feature -> new Feature(feature.getName(),feature.getDescription())));
 		provider.setEvents(new HashSet<>(extarctListItems(resource.getEvents(), event -> new ProviderEvents(event, event.getDescription()))));
 		

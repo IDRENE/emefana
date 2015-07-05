@@ -38,6 +38,12 @@ public ProviderService(ServiceOffering service, String description) {
 	this.service = service;
 	this.description = description;
 }
+
+public ProviderService() {
+
+}
+
+
   
   
 }
