@@ -36,6 +36,8 @@ public class SearchCriteria {
 	
 	@JsonIgnore
 	@Setter private Date fromDate;
+	
+	@Setter @Getter boolean uselocation;
 
 	@JsonIgnore
 	@Setter private Date toDate;
@@ -55,6 +57,7 @@ public class SearchCriteria {
 	@Getter @Setter private String providerType;//category
 	@Setter @Getter private Pageable page;
 	@Setter @Getter private int maxDistance = 15;
+	@Setter @Getter private String country = "Tanzania";
 	
 	@Getter @Setter private String nearLocationStr;
 	
@@ -64,8 +67,14 @@ public class SearchCriteria {
 	@ApiObjectField(name ="toDateAsString", description="event end date", format="yyyy-MM-dd HH:mm:ss.SSS")
 	@Getter @Setter String toDateAsString;
 	
+	
+	/**
+	 * indicates a context in which the {@link #SearchCriteria()} is used
+	 * between Searching or Booking
+	 * 
+	 */
 	@JsonIgnore
-	@Setter @Getter private String usedAs;
+	@Setter @Getter private String usedAs; 
 
 	@Getter @Setter String name;
 
@@ -73,7 +82,7 @@ public class SearchCriteria {
 	 * @param nearLocation the nearLocation to set
 	 */
 	public void setNearLocation(double[] nearLocation) {
-		if (StringUtils.hasText(nearLocationStr))
+		if (StringUtils.hasText(nearLocationStr) && ! uselocation)
 			this.nearLocation = ResourceUtil.nearLocationString(nearLocationStr);
 		else
 		this.nearLocation = nearLocation;

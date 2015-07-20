@@ -156,7 +156,7 @@ class EmefanaServiceImpl implements EmefanaService {
 	@Override
 	public Optional<GeoResults<Provider>> searchProvidersByCriteria(SearchCriteria criteria) {
 		Assert.notNull(criteria, "Criteria must not be null");
-		GeoResults<Provider> prvs = providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.DONE, BOOKINGSTATE.NEW,BOOKINGSTATE.CANCELLED));
+		GeoResults<Provider> prvs = providerRepository.findAllProviders(criteria, bookingsByDates(criteria, false,BOOKINGSTATE.CONFIRMED, BOOKINGSTATE.FULFILLMENT));
 		retrieveThumbnailsForProvidersFromGeoResult(prvs);
 		return Optional.ofNullable(prvs);
 	}

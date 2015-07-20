@@ -92,8 +92,11 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 		searchCriteria.getOpriceFrom().ifPresent( // Minimum price
 				minPrice -> criteria.and("price.price").gte(minPrice));
 
-		searchCriteria.getOCity().ifPresent(
-				city -> criteria.and("address.city.$id").is(city));
+//		searchCriteria.getOCity().ifPresent(
+//				city -> criteria.and("address.city.$id").is(city)); Only closest providers by distance
+		
+		
+        //criteria.and("address.city.country").is(searchCriteria.getCountry());
 		
 		searchCriteria.getOProviderType().ifPresent( // provider type
 				type -> criteria.and("categories.$id").is(type));
@@ -128,6 +131,8 @@ class ProviderRepositoryImpl implements ProviderRepositoryCustom{
 					 }).collect(toList());
 			return new GeoResults<Provider>(result,Metrics.KILOMETERS);
 		}
+		
+		//TODO Filter by Country here
 		
 		return results;
 	}

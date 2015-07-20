@@ -89,7 +89,7 @@ public class SearchCriteriaValidator implements Validator{
 			}
 
 		}else{
-			if (!StringUtils.hasText(bookingCriteria.getCity())){
+			if (!bookingCriteria.isUselocation() && !StringUtils.hasText(bookingCriteria.getCity())){
 				errors.rejectValue("city", null, "a city for  availble providers is a required field");
 			}
 			
