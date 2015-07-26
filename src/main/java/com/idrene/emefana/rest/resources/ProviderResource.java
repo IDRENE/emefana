@@ -48,6 +48,8 @@ public class ProviderResource extends ResourceSupport {
 	@ApiObjectField(name = "providerLocation" , description="lattitude and longtude")
 	public double[] providerLocation;
 	
+	public PriceRangeResource priceRange;
+	
 	@ApiObjectField(name = "providerAddress", description="provider physical address" , required=true)
 	public Address providerAddress;
 	

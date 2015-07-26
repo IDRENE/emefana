@@ -8,6 +8,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 import org.springframework.hateoas.Link;
@@ -17,6 +18,7 @@ import com.idrene.emefana.domain.BookingStatus.BOOKINGSTATE;
 import com.idrene.emefana.domain.Provider;
 import com.idrene.emefana.rest.controllers.BookingResourceController;
 import com.idrene.emefana.rest.controllers.ListingResourceController;
+import com.idrene.emefana.rest.resources.PriceRangeResource;
 import com.idrene.emefana.rest.resources.ProviderEventsResource;
 import com.idrene.emefana.rest.resources.ProviderResource;
 import com.idrene.emefana.rest.resources.ProviderServiceResource;
@@ -51,11 +53,16 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		resource.businessDescription = entity.getDescription();
 		resource.providerCategories = entity.getCategories();
 		resource.registeredDate = DateConvertUtil.asLocalDate(entity.getRegistrationDate());
+		
 		resource.providerEvents = entity.getEvents().stream().map(e -> new ProviderEventsResource(e, view)).collect(toList());
 		resource.providerServices =entity.getServices().stream().map(s -> new ProviderServiceResource(s, view)).collect(toList());
 		resource.providerFeatures = entity.getFeatures();
 		resource.providerVenues = entity.getVenuesDetails();
 		resource.thumnailPhoto = entity.getThumnailPhoto();
+		
+		//Price Range
+		DoubleSummaryStatistics ps = entity.getPriceStatistics();
+		resource.priceRange = new PriceRangeResource(entity.getCurrency(), ps.getMin(), ps.getMax());
 		
 		resource.add(buildProviderLinks(entity));
 		

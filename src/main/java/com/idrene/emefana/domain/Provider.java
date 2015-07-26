@@ -4,6 +4,7 @@
 package com.idrene.emefana.domain;
 
 import java.util.Date;
+import java.util.DoubleSummaryStatistics;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -85,4 +86,31 @@ public class Provider {
 	
 	@TextScore 
 	@Getter @Setter Float score;
+	
+	@Transient
+	@Getter @Setter String currency;
+	
+	
+	
+     /**
+      * Check if it`s a Venue first
+     * @return
+     */
+    public DoubleSummaryStatistics getPriceStatistics(){
+
+    	 if (categories.stream().anyMatch(type-> type.getType().equals(ProviderCategories.Venues.name()))){
+	    		 venuesDetails.stream().findAny().ifPresent(v -> { this. currency = v.getPrice().getCurrency();});
+    		return  venuesDetails.stream().mapToDouble(v -> v.getPrice().getPrice()).summaryStatistics();
+    	 }
+
+    	 
+    	 services.stream().filter(s-> null != s.getPrice()).findAny().ifPresent(s -> {
+			 this. currency = s.getPrice().getCurrency();
+		 });
+    	 
+		return  services.stream().filter(s-> null != s.getPrice()).findAny().isPresent()?
+				services.stream().mapToDouble(s -> s.getPrice().getPrice()).summaryStatistics():
+					new DoubleSummaryStatistics();
+    	 
+     }
 }
