@@ -21,7 +21,6 @@ import com.idrene.emefana.domain.Contact.ContactTypeEnum;
 import com.idrene.emefana.domain.Feature;
 import com.idrene.emefana.domain.Provider;
 import com.idrene.emefana.domain.ProviderEvents;
-import com.idrene.emefana.domain.ProviderService;
 import com.idrene.emefana.domain.ProviderType;
 import com.idrene.emefana.domain.User;
 import com.idrene.emefana.domain.VenuesDetail;
@@ -99,13 +98,13 @@ public class ListingResourceToProvider implements Converter<ListingResource, Pro
 	/**
 	 * @param resource
 	 * @param defaultLocation
-	 * @return
+	 * @return location[longitude,latitude]
 	 */
 	private double[] extractLocation(ListingResource resource, double[] defaultLocation){
 		double[] location = new double[2];
 		if(resource.getUselocation()){
-			location[0] = resource.getLatitude();
-			location[1] = resource.getLongitude();
+			location[0] = resource.getLongitude();
+			location[1] = resource.getLatitude();
 		}else{
 			location = defaultLocation;
 		}

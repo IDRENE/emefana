@@ -14,6 +14,7 @@ import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.idrene.emefana.domain.Address;
+import com.idrene.emefana.domain.Contact;
 import com.idrene.emefana.domain.Feature;
 import com.idrene.emefana.domain.FileMetadata;
 import com.idrene.emefana.domain.ProviderType;
@@ -61,6 +62,8 @@ public class ProviderResource extends ResourceSupport {
 	
 	@ApiObjectField(name = "providerVenues", description= "provider Venues , only Venues providers category ")
 	public Set<VenuesDetail> providerVenues;
+	
+	public List<Contact> contacts;
 	
 	@ApiObjectField(name = "providerCategories", description= "provider in categories")
 	public Set<ProviderType> providerCategories;

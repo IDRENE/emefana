@@ -90,8 +90,6 @@ public class Provider {
 	@Transient
 	@Getter @Setter String currency;
 	
-	
-	
      /**
       * Check if it`s a Venue first
      * @return

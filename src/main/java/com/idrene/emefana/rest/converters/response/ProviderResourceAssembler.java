@@ -53,6 +53,7 @@ public class ProviderResourceAssembler extends ResourceAssemblerSupport<Provider
 		resource.businessDescription = entity.getDescription();
 		resource.providerCategories = entity.getCategories();
 		resource.registeredDate = DateConvertUtil.asLocalDate(entity.getRegistrationDate());
+		resource.contacts = entity.getContacts();// TODO UI consume this
 		
 		resource.providerEvents = entity.getEvents().stream().map(e -> new ProviderEventsResource(e, view)).collect(toList());
 		resource.providerServices =entity.getServices().stream().map(s -> new ProviderServiceResource(s, view)).collect(toList());
